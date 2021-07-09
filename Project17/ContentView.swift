@@ -8,9 +8,49 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var date = Date()
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .none
+         
+        
+        return TabView {
+            NavigationView {
+                MealsView()
+                
+                    .navigationBarTitle("Meals - \(dateFormatter.string(from: date))")
+                    .navigationBarItems(leading: Button(action: {
+                        print("left")
+                    }) {
+                        Image(systemName: "chevron.left")
+                    }, trailing: Button(action: {
+                        print("right")
+                    }) {
+                        Image(systemName: "chevron.right")
+                    })
+                    
+            }.tag(0)
+            .tabItem {
+                Image(systemName: "rectangle.split.3x3")
+                Text("Meals")
+            }
+            
+            
+            NavigationView {
+                ProgressView()
+                
+                    .navigationBarTitle("Progress")
+            }.tag(1)
+            .tabItem {
+                Image(systemName: "chart.bar.xaxis")
+                Text("Progress")
+            }
+            
+        }.accentColor(.red)
     }
 }
 
