@@ -10,6 +10,7 @@ import SwiftUI
 struct MealsView: View {
     
     @State private var calories = 0
+    @State private var showFoodPicker = false
     
     var body: some View {
         List {
@@ -18,6 +19,8 @@ struct MealsView: View {
                     .font(.system(size: 30, weight: .heavy, design: .default))
                 Button("Add Food") {
                     print("asd")
+                    
+                    self.showFoodPicker.toggle()
                 }
                 .font(.system(size: 15, weight: .heavy, design: .default))
                 .foregroundColor(.red)
@@ -27,6 +30,8 @@ struct MealsView: View {
                     .font(.system(size: 30, weight: .heavy, design: .default))
                 Button("Add Food") {
                     print("asd")
+                    
+                    self.showFoodPicker.toggle()
                 }
                 .font(.system(size: 15, weight: .heavy, design: .default))
                 .foregroundColor(.red)
@@ -36,6 +41,8 @@ struct MealsView: View {
                     .font(.system(size: 30, weight: .heavy, design: .default))
                 Button("Add Food") {
                     print("asd")
+                    
+                    self.showFoodPicker.toggle()
                 }
                 .font(.system(size: 15, weight: .heavy, design: .default))
                 .foregroundColor(.red)
@@ -45,6 +52,8 @@ struct MealsView: View {
                     .font(.system(size: 30, weight: .heavy, design: .default))
                 Button("Add Food") {
                     print("asd")
+                    
+                    self.showFoodPicker.toggle()
                 }
                 .font(.system(size: 15, weight: .heavy, design: .default))
                 .foregroundColor(.red)
@@ -58,7 +67,9 @@ struct MealsView: View {
             
         }
         .listStyle(PlainListStyle())
-        
+        .sheet(isPresented: $showFoodPicker) {
+            FoodPicker()
+        }
     }
 }
 

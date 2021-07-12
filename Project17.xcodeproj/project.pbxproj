@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3991C73D269BFA4A00175C86 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3991C73C269BFA4A00175C86 /* ImagePicker.swift */; };
+		3991C73F269BFA6800175C86 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3991C73E269BFA6800175C86 /* UIImage+Extensions.swift */; };
+		3991C741269BFA7D00175C86 /* Food101.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3991C740269BFA7D00175C86 /* Food101.mlmodel */; };
+		3991C743269BFAA700175C86 /* FoodPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3991C742269BFAA700175C86 /* FoodPicker.swift */; };
 		39B63C3526965B36001BE6D7 /* Project17App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B63C3426965B36001BE6D7 /* Project17App.swift */; };
 		39B63C3726965B36001BE6D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B63C3626965B36001BE6D7 /* ContentView.swift */; };
 		39B63C3926965B39001BE6D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39B63C3826965B39001BE6D7 /* Assets.xcassets */; };
@@ -16,6 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3991C73C269BFA4A00175C86 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		3991C73E269BFA6800175C86 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		3991C740269BFA7D00175C86 /* Food101.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Food101.mlmodel; sourceTree = "<group>"; };
+		3991C742269BFAA700175C86 /* FoodPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodPicker.swift; sourceTree = "<group>"; };
 		39B63C3126965B36001BE6D7 /* Project17.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project17.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39B63C3426965B36001BE6D7 /* Project17App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project17App.swift; sourceTree = "<group>"; };
 		39B63C3626965B36001BE6D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -56,6 +64,7 @@
 		39B63C3326965B36001BE6D7 /* Project17 */ = {
 			isa = PBXGroup;
 			children = (
+				3991C740269BFA7D00175C86 /* Food101.mlmodel */,
 				39B63C3426965B36001BE6D7 /* Project17App.swift */,
 				39B63C3626965B36001BE6D7 /* ContentView.swift */,
 				39B63C3826965B39001BE6D7 /* Assets.xcassets */,
@@ -63,6 +72,9 @@
 				39B63C3A26965B39001BE6D7 /* Preview Content */,
 				39B63C44269815C7001BE6D7 /* MealsView.swift */,
 				39B63C47269815D2001BE6D7 /* ProgressView.swift */,
+				3991C73C269BFA4A00175C86 /* ImagePicker.swift */,
+				3991C73E269BFA6800175C86 /* UIImage+Extensions.swift */,
+				3991C742269BFAA700175C86 /* FoodPicker.swift */,
 			);
 			path = Project17;
 			sourceTree = "<group>";
@@ -144,8 +156,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3991C741269BFA7D00175C86 /* Food101.mlmodel in Sources */,
+				3991C743269BFAA700175C86 /* FoodPicker.swift in Sources */,
 				39B63C3726965B36001BE6D7 /* ContentView.swift in Sources */,
 				39B63C48269815D2001BE6D7 /* ProgressView.swift in Sources */,
+				3991C73D269BFA4A00175C86 /* ImagePicker.swift in Sources */,
+				3991C73F269BFA6800175C86 /* UIImage+Extensions.swift in Sources */,
 				39B63C3526965B36001BE6D7 /* Project17App.swift in Sources */,
 				39B63C45269815C7001BE6D7 /* MealsView.swift in Sources */,
 			);
@@ -205,7 +221,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -260,7 +276,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -277,9 +293,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Project17/Preview Content\"";
+				DEVELOPMENT_TEAM = TYCRSTPK8G;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Project17/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -287,7 +304,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.evantu.Project17;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -298,9 +315,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Project17/Preview Content\"";
+				DEVELOPMENT_TEAM = TYCRSTPK8G;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Project17/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -308,7 +326,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.evantu.Project17;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
