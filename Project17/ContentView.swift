@@ -21,17 +21,8 @@ struct ContentView: View {
         return TabView {
             NavigationView {
                 MealsView()
-                
                     .navigationBarTitle("Meals - \(dateFormatter.string(from: date))")
-                    .navigationBarItems(leading: Button(action: {
-                        print("left")
-                    }) {
-                        Image(systemName: "chevron.left")
-                    }, trailing: Button(action: {
-                        print("right")
-                    }) {
-                        Image(systemName: "chevron.right")
-                    })
+                    .navigationBarItems(trailing: DatePicker("", selection: $date, displayedComponents: .date))
                     
             }.tag(0)
             .tabItem {

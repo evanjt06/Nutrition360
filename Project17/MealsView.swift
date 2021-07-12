@@ -60,9 +60,7 @@ struct MealsView: View {
             }
             
             Section {
-                Text("Calories: \(calories) cal")
-                Text("Daily goal reached: ") + Text("Almost there!").foregroundColor(.red)
-                NavigationLink("See Nutrition Chart...", destination: Text("chart here"))
+                Text("Total Calories: \(calories) cal")
             }
             
         }
