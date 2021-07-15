@@ -7,11 +7,15 @@
 
 import SwiftUI
 import ConcentricOnboarding
+import SwiftUICharts
 
 struct ContentView: View {
     
     @State private var hasSceneOnboardingScreen = false
     @State private var date = Date()
+    
+    @State private var name = ""
+    @State private var gender = ""
     
     var body: some View {
         
@@ -21,17 +25,26 @@ struct ContentView: View {
 
         if !hasSceneOnboardingScreen {
            
-            let pages = (0...3).map { i in
-                AnyView(PageView(title: MockData.title, imageName: MockData.imageNames[i], header: MockData.headers[i], content: MockData.contentStrings[i], textColor: MockData.textColors[i]))
-            }
+            let pages = [
+                AnyView(Page1()),
+                AnyView(Page2(name: $name, gender: $gender)),
+            ]
 
-            var a = ConcentricOnboardingView(pages: pages, bgColors: MockData.colors)
+            var a = ConcentricOnboardingView(pages: pages, bgColors: [
+                "F38181",
+                "FCE38A",
+                ].map{ Color(hex: $0) })
 
     //        a.didPressNextButton = {
     //            a.goToPreviousPage(animated: true)
     //        }
             a.insteadOfCyclingToFirstPage = {
-                print("do your thing")
+                
+                print(name,gender)
+                
+                withAnimation {
+                    self.hasSceneOnboardingScreen = true
+                }
             }
             a.animationDidEnd = {
 
@@ -75,3 +88,17 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+extension Color {
+    init(hex: String) {
+        let scanner = Scanner(string: hex)
+        var rgbValue: UInt64 = 0
+        scanner.scanHexInt64(&rgbValue)
+
+        let r = (rgbValue & 0xff0000) >> 16
+        let g = (rgbValue & 0xff00) >> 8
+        let b = rgbValue & 0xff
+
+
+        self.init(red: Double(r) / 0xff, green: Double(g) / 0xff, blue: Double(b) / 0xff)
+    }
+}

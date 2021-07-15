@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,7 +11,9 @@
 		3991C73F269BFA6800175C86 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3991C73E269BFA6800175C86 /* UIImage+Extensions.swift */; };
 		3991C741269BFA7D00175C86 /* Food101.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3991C740269BFA7D00175C86 /* Food101.mlmodel */; };
 		3991C743269BFAA700175C86 /* FoodPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3991C742269BFAA700175C86 /* FoodPicker.swift */; };
-		39A090ED269D63C300286685 /* OnboardingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A090EC269D63C300286685 /* OnboardingUtils.swift */; };
+		39A090F0269E9F7400286685 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 39A090EF269E9F7400286685 /* SwiftUICharts */; };
+		39A090F3269EA8F600286685 /* Page1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A090F2269EA8F600286685 /* Page1.swift */; };
+		39A090F5269EA90100286685 /* Page2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A090F4269EA90100286685 /* Page2.swift */; };
 		39B63C3526965B36001BE6D7 /* Project17App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B63C3426965B36001BE6D7 /* Project17App.swift */; };
 		39B63C3726965B36001BE6D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B63C3626965B36001BE6D7 /* ContentView.swift */; };
 		39B63C3926965B39001BE6D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39B63C3826965B39001BE6D7 /* Assets.xcassets */; };
@@ -27,7 +29,8 @@
 		3991C73E269BFA6800175C86 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		3991C740269BFA7D00175C86 /* Food101.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Food101.mlmodel; sourceTree = "<group>"; };
 		3991C742269BFAA700175C86 /* FoodPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodPicker.swift; sourceTree = "<group>"; };
-		39A090EC269D63C300286685 /* OnboardingUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingUtils.swift; sourceTree = "<group>"; };
+		39A090F2269EA8F600286685 /* Page1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page1.swift; sourceTree = "<group>"; };
+		39A090F4269EA90100286685 /* Page2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page2.swift; sourceTree = "<group>"; };
 		39B63C3126965B36001BE6D7 /* Project17.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project17.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39B63C3426965B36001BE6D7 /* Project17App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project17App.swift; sourceTree = "<group>"; };
 		39B63C3626965B36001BE6D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -46,12 +49,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FADAB8B7F36EF3E986E4654 /* Pods_Project17.framework in Frameworks */,
+				39A090F0269E9F7400286685 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39A090F1269EA8DE00286685 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				39A090F2269EA8F600286685 /* Page1.swift */,
+				39A090F4269EA90100286685 /* Page2.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		39B63C2826965B36001BE6D7 = {
 			isa = PBXGroup;
 			children = (
@@ -73,10 +86,10 @@
 		39B63C3326965B36001BE6D7 /* Project17 */ = {
 			isa = PBXGroup;
 			children = (
+				39A090F1269EA8DE00286685 /* Onboarding */,
 				3991C740269BFA7D00175C86 /* Food101.mlmodel */,
 				39B63C3426965B36001BE6D7 /* Project17App.swift */,
 				39B63C3626965B36001BE6D7 /* ContentView.swift */,
-				39A090EC269D63C300286685 /* OnboardingUtils.swift */,
 				39B63C3826965B39001BE6D7 /* Assets.xcassets */,
 				39B63C3D26965B39001BE6D7 /* Info.plist */,
 				39B63C3A26965B39001BE6D7 /* Preview Content */,
@@ -103,7 +116,6 @@
 				329D8173F491128A2D2D31FF /* Pods-Project17.debug.xcconfig */,
 				E42ABAB17FB7136B1935823D /* Pods-Project17.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -133,6 +145,9 @@
 			dependencies = (
 			);
 			name = Project17;
+			packageProductDependencies = (
+				39A090EF269E9F7400286685 /* SwiftUICharts */,
+			);
 			productName = Project17;
 			productReference = 39B63C3126965B36001BE6D7 /* Project17.app */;
 			productType = "com.apple.product-type.application";
@@ -160,6 +175,9 @@
 				Base,
 			);
 			mainGroup = 39B63C2826965B36001BE6D7;
+			packageReferences = (
+				39A090EE269E9F7300286685 /* XCRemoteSwiftPackageReference "ChartView" */,
+			);
 			productRefGroup = 39B63C3226965B36001BE6D7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -228,14 +246,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39A090F5269EA90100286685 /* Page2.swift in Sources */,
 				3991C741269BFA7D00175C86 /* Food101.mlmodel in Sources */,
 				3991C743269BFAA700175C86 /* FoodPicker.swift in Sources */,
 				39B63C3726965B36001BE6D7 /* ContentView.swift in Sources */,
-				39A090ED269D63C300286685 /* OnboardingUtils.swift in Sources */,
 				39B63C48269815D2001BE6D7 /* ProgressView.swift in Sources */,
 				3991C73D269BFA4A00175C86 /* ImagePicker.swift in Sources */,
 				3991C73F269BFA6800175C86 /* UIImage+Extensions.swift in Sources */,
 				39B63C3526965B36001BE6D7 /* Project17App.swift in Sources */,
+				39A090F3269EA8F600286685 /* Page1.swift in Sources */,
 				39B63C45269815C7001BE6D7 /* MealsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,6 +446,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		39A090EE269E9F7300286685 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = "2.0.0-beta.1";
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		39A090EF269E9F7400286685 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39A090EE269E9F7300286685 /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 39B63C2926965B36001BE6D7 /* Project object */;
 }
