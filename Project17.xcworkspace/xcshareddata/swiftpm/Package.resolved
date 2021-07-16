@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "BottomBar-SwiftUI",
+        "repositoryURL": "https://github.com/smartvipere75/bottombar-swiftui",
+        "state": {
+          "branch": "master",
+          "revision": "838ce6316f8282467ebd00cf4d9706dc58978633",
+          "version": null
+        }
+      },
+      {
         "package": "SwiftUICharts",
         "repositoryURL": "https://github.com/AppPear/ChartView",
         "state": {

@@ -7,5 +7,6 @@ target 'Project17' do
 
   # Pods for Project17
   pod 'ConcentricOnboarding'
-
+  pod 'ExytePopupView'
+  
 end

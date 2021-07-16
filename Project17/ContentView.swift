@@ -8,20 +8,71 @@
 import SwiftUI
 import ConcentricOnboarding
 import SwiftUICharts
+import ExytePopupView
+import BottomBar_SwiftUI
+    
+let items: [BottomBarItem] = [
+    BottomBarItem(icon: "rectangle.split.3x3", title: "Meals", color: .purple),
+    BottomBarItem(icon: "chart.bar.xaxis", title: "Progress", color: .pink),
+]
 
-struct ContentView: View {
+struct BasicView_1: View {
     
-    @State private var hasSceneOnboardingScreen = false
     @State private var date = Date()
-    
-    @State private var name = ""
-    @State private var gender = ""
     
     var body: some View {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .long
         dateFormatter.timeStyle = .none
+        
+        return VStack {
+            MealsView()
+                .navigationBarTitle(
+
+                    Text("\(dateFormatter.string(from: date))")
+
+                )
+                .navigationBarItems(trailing:
+
+                                        HStack {
+                                            DatePicker("", selection: $date, displayedComponents: .date)
+                                            .datePickerStyle(CompactDatePickerStyle())
+                                            .labelsHidden()
+                                        }
+                )
+        }
+    }
+}
+
+struct BasicView_2: View {
+    
+    var body: some View {
+      
+        return VStack {
+            ProgressView()
+                .navigationBarTitle("Progress")
+        }
+    }
+}
+
+
+struct ContentView: View {
+    
+    @State private var selectedIndex: Int = 0
+
+        var selectedItem: BottomBarItem {
+            items[selectedIndex]
+        }
+    
+    @State private var hasSceneOnboardingScreen = false
+    
+    @State private var name = ""
+    @State private var gender = ""
+    
+    @State private var showingIntroPopup = true
+    
+    var body: some View {
 
         if !hasSceneOnboardingScreen {
            
@@ -54,32 +105,65 @@ struct ContentView: View {
             return AnyView(a)
             
         } else {
-            return AnyView(TabView {
-                NavigationView {
-                    MealsView()
-                        .navigationBarTitle("Meals - \(dateFormatter.string(from: date))")
-                        .navigationBarItems(trailing: DatePicker("", selection: $date, displayedComponents: .date))
-                        
-                }.tag(0)
-                .tabItem {
-                    Image(systemName: "rectangle.split.3x3")
-                    Text("Meals")
+            return AnyView(
+                
+                ZStack {
+                    NavigationView {
+                        VStack {
+                            if (selectedIndex == 0) {
+                                       BasicView_1()
+                            }
+                            
+                            if (selectedIndex == 1) {
+                                BasicView_2()
+                            }
+                                           
+                                       BottomBar(selectedIndex: $selectedIndex, items: items)
+                                   }
+                    }
+
                 }
-                
-                
-                NavigationView {
-                    ProgressView()
-                    
-                        .navigationBarTitle("Progress")
-                }.tag(1)
-                .tabItem {
-                    Image(systemName: "chart.bar.xaxis")
-                    Text("Progress")
-                }
-                
-            }.accentColor(.red))
-        }
-    }
+                .popup(isPresented: $showingIntroPopup, type: .`default`, closeOnTap: false) {
+                    VStack(spacing: 10) {
+                                Image("screen 1")
+                                    .resizable()
+                                    .aspectRatio(contentMode: ContentMode.fit)
+                                    .frame(width: 100, height: 100)
+
+                                Text("Hi Evan!")
+                                    .foregroundColor(.white)
+                                    .fontWeight(.bold)
+
+                                Text("In this example floats are set to disappear after 2 seconds. Tap the toasts to dismiss or just open some other popup - previous one will be dismissed. This popup will only be closed if you tap the button.")
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .font(.system(size: 14))
+                                    .foregroundColor(Color(red: 0.9, green: 0.9, blue: 0.9))
+                                    .lineLimit(nil)
+
+                                Spacer()
+
+                                Button(action: {
+                                    self.showingIntroPopup = false
+                                }) {
+                                    Text("Got it")
+                                        .font(.system(size: 14))
+                                        .foregroundColor(.black)
+                                        .fontWeight(.bold)
+                                }
+                                .frame(width: 100, height: 40)
+                                .background(Color.white)
+                                .cornerRadius(20.0)
+                            }
+                            .padding(EdgeInsets(top: 70, leading: 20, bottom: 40, trailing: 20))
+                            .frame(width: 300, height: 400)
+                    .background(Color.orange)
+                            .cornerRadius(10.0)
+                            .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.13), radius: 10.0)
+                    }
+            
+            
+            )}
+}
 }
 
 struct ContentView_Previews: PreviewProvider {

@@ -14,6 +14,7 @@
 		39A090F0269E9F7400286685 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 39A090EF269E9F7400286685 /* SwiftUICharts */; };
 		39A090F3269EA8F600286685 /* Page1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A090F2269EA8F600286685 /* Page1.swift */; };
 		39A090F5269EA90100286685 /* Page2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A090F4269EA90100286685 /* Page2.swift */; };
+		39A090FA26A0191300286685 /* BottomBar-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 39A090F926A0191300286685 /* BottomBar-SwiftUI */; };
 		39B63C3526965B36001BE6D7 /* Project17App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B63C3426965B36001BE6D7 /* Project17App.swift */; };
 		39B63C3726965B36001BE6D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B63C3626965B36001BE6D7 /* ContentView.swift */; };
 		39B63C3926965B39001BE6D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39B63C3826965B39001BE6D7 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39A090FA26A0191300286685 /* BottomBar-SwiftUI in Frameworks */,
 				8FADAB8B7F36EF3E986E4654 /* Pods_Project17.framework in Frameworks */,
 				39A090F0269E9F7400286685 /* SwiftUICharts in Frameworks */,
 			);
@@ -147,6 +149,7 @@
 			name = Project17;
 			packageProductDependencies = (
 				39A090EF269E9F7400286685 /* SwiftUICharts */,
+				39A090F926A0191300286685 /* BottomBar-SwiftUI */,
 			);
 			productName = Project17;
 			productReference = 39B63C3126965B36001BE6D7 /* Project17.app */;
@@ -177,6 +180,7 @@
 			mainGroup = 39B63C2826965B36001BE6D7;
 			packageReferences = (
 				39A090EE269E9F7300286685 /* XCRemoteSwiftPackageReference "ChartView" */,
+				39A090F826A0191300286685 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */,
 			);
 			productRefGroup = 39B63C3226965B36001BE6D7 /* Products */;
 			projectDirPath = "";
@@ -456,6 +460,14 @@
 				minimumVersion = "2.0.0-beta.1";
 			};
 		};
+		39A090F826A0191300286685 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/smartvipere75/bottombar-swiftui";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -463,6 +475,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 39A090EE269E9F7300286685 /* XCRemoteSwiftPackageReference "ChartView" */;
 			productName = SwiftUICharts;
+		};
+		39A090F926A0191300286685 /* BottomBar-SwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39A090F826A0191300286685 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */;
+			productName = "BottomBar-SwiftUI";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
