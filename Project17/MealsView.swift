@@ -98,7 +98,11 @@ struct MealsView: View {
             }
             
             Section {
-                Text("Total Calories: \(calories) cal")
+                HStack {
+                    Spacer()
+                    Text("Total Calories: \(calories) cal")
+                    Spacer()
+                }
             }
             
         }

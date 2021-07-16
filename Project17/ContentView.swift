@@ -65,12 +65,12 @@ struct ContentView: View {
             items[selectedIndex]
         }
     
-    @State private var hasSceneOnboardingScreen = false
+    @State private var hasSceneOnboardingScreen = true
     
     @State private var name = ""
     @State private var gender = ""
     
-    @State private var showingIntroPopup = true
+    @State private var showingIntroPopup = false
     
     var body: some View {
 

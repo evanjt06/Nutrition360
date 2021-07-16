@@ -8,6 +8,16 @@
 import SwiftUI
 
 struct FoodPicker: View {
+    
+    
+    let restaurants = [
+            Restaurant(name: "Joe's Original"),
+            Restaurant(name: "The Real Joe's Original"),
+            Restaurant(name: "Original Joe's")
+        ]
+
+    
+    
     @Environment(\.colorScheme) var colorScheme
 
     @State private var sourceType: UIImagePickerController.SourceType?
@@ -18,6 +28,8 @@ struct FoodPicker: View {
     @State private var showingImagePicker = false
     
     @State private var confirmUseThisFood = false
+    
+    @State private var text = ""
     
     let model = Food101()
     
@@ -38,26 +50,55 @@ struct FoodPicker: View {
                 
             } else {
                
-                GeometryReader { geometry in
-                    VStack(alignment: .leading) {
-                        Button("Use camera") {
+                VStack {
+                
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Button(action: {
+                                self.sourceType = .camera
+                                self.showingImagePicker.toggle()
+                            }) {
+                                Image(systemName: "camera")
+                                Text("Scan")
+                            }
+                        }
+                        .padding(10)
+                        
+                        .background(colorScheme == .dark ? Color.white : Color.black)
+                        .cornerRadius(25)
+                        .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
+                        .onTapGesture {
                             self.sourceType = .camera
                             self.showingImagePicker.toggle()
-                       }
-                        .font(.headline)
+                        }
+
+                    HStack {
+                        TextField("Search for foods...", text: $text)
+                              .padding(10)
+                              .background(Color(.systemGray6))
+                              .cornerRadius(8)
                     }
-                    .frame(maxWidth: geometry.size.width)
-                    .padding(50)
-                    .background(colorScheme == .dark ? Color.white : Color.black)
-                    .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
-                    .onTapGesture {
-                        self.sourceType = .camera
-                        self.showingImagePicker.toggle()
                     }
+                    .padding(10)
+                    
+                    Spacer()
+                    
+                    NavigationView {
+                            List(restaurants) { restaurant in
+                                NavigationLink(destination: Text("Hello.")) {
+                                    RestaurantRow(restaurant: restaurant)
+                                }
+                           }
+                            .navigationBarTitle("")
+                            .navigationBarHidden(true)
+                    }
+                    
                 }
-            }
+                    
             
-            Spacer()
+            }
+          
+            
             
             if self.confirmUseThisFood == true {
                 Button("Use this image...") {
@@ -90,8 +131,8 @@ struct FoodPicker: View {
                 self.originalResult = ""
             }
             .padding()
-            .frame(width: 300, height: 100)
-            .background(Color.blue)
+            .frame(width: 300, height: 52)
+            .background(Color.purple)
             .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
             .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
         }
@@ -133,5 +174,24 @@ struct FoodPicker: View {
 struct FoodPicker_Previews: PreviewProvider {
     static var previews: some View {
         FoodPicker()
+    }
+}
+
+
+
+
+
+// A struct to store exactly one restaurant's data.
+struct Restaurant: Identifiable {
+    let id = UUID()
+    let name: String
+}
+
+// A view that shows the data for one Restaurant.
+struct RestaurantRow: View {
+    var restaurant: Restaurant
+
+    var body: some View {
+        Text("Come and eat at \(restaurant.name)")
     }
 }
