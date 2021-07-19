@@ -116,15 +116,16 @@ struct FoodPicker: View {
 
             if self.confirmUseThisFood == true {
                 Button("Use this image...") {
-                    self.result = ""
-                    self.selectedImage = nil
-                    self.showingImagePicker = false
-                    self.image = nil
-                    self.confirmUseThisFood = false
-                    self.originalResult = ""
+//                    self.result = ""
+//                    self.selectedImage = nil
+//                    self.showingImagePicker = false
+//                    self.image = nil
+//                    self.confirmUseThisFood = false
+//                    self.originalResult = ""
+                    print("used image...")
                 }
                 .padding()
-                .frame(width: 300, height: 100)
+                .frame(width: 300, height: 52)
                 .background(Color.blue)
                 .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
                 .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
@@ -132,20 +133,6 @@ struct FoodPicker: View {
 
             Spacer()
                    .frame(height: 20)
-
-            Button("Choose another image") {
-                self.result = ""
-                self.selectedImage = nil
-                self.showingImagePicker = false
-                self.image = nil
-                self.confirmUseThisFood = false
-                self.originalResult = ""
-            }
-            .padding()
-            .frame(width: 300, height: 52)
-            .background(Color.purple)
-            .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
-            .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
         }
         }
         .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
@@ -177,7 +164,7 @@ struct FoodPicker: View {
             }
             
             self.confirmUseThisFood = true
-            self.result = "The food is \(result), estimated probability of \(String(confidenceRate).prefix(4))%."
+            self.result = "Scanned food: \(result), Accuracy: \(String(confidenceRate).prefix(3))%."
            }
        
        }

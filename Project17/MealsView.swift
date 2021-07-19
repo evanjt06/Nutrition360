@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MealsView: View {
     
+    let sampleArray = ["1","2","3"]
+    
     @State private var calories = 0
     @State private var showFoodPicker = false
     
@@ -33,6 +35,10 @@ struct MealsView: View {
                     print("asd")
                     
                     self.showFoodPicker.toggle()
+                }
+                
+                ForEach(sampleArray, id: \.self) {
+                    Text($0)
                 }
             }
             Section {

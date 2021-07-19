@@ -77,6 +77,22 @@ struct FoodListRowItem: View {
                         .background(Color.blue)
                         .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
                         .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
+                    
+                    Button("Select this food") {
+        //                self.result = ""
+        //                self.selectedImage = nil
+        //                self.showingImagePicker = false
+        //                self.image = nil
+        //                self.confirmUseThisFood = false
+        //                self.originalResult = ""
+                        
+                        print("hi")
+                    }
+                    .padding()
+                    .frame(width: 300, height: 52)
+                    .background(Color.purple)
+                    .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
                 }.padding()
             
             
@@ -95,7 +111,7 @@ struct FoodListRowItem: View {
                    self.carbs = foods.parsed[0].food.nutrients.carbs
                    self.protein = foods.parsed[0].food.nutrients.protein
                    self.fat = foods.parsed[0].food.nutrients.fat
-                   self.fiber = foods.parsed[0].food.nutrients.fiber
+                    self.fiber = foods.parsed[0].food.nutrients.fiber ?? 0.0
                    self.calories = foods.parsed[0].food.nutrients.kcal
                    self.imageURL = foods.parsed[0].food.image ?? ""
                })

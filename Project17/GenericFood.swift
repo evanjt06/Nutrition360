@@ -29,7 +29,7 @@ struct GenericFood_Nutrients: Codable {
    var protein: Double
    var fat: Double
    var carbs: Double
-    var fiber: Double
+    var fiber: Double?
 
    private enum CodingKeys : String, CodingKey {
        case kcal = "ENERC_KCAL", protein = "PROCNT", fat="FAT", carbs="CHOCDF", fiber="FIBTG"
