@@ -10,6 +10,7 @@ import SwiftUI
 struct FoodListRowItem: View {
     
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.managedObjectContext) private var viewContext
     
     var food: String
     
@@ -23,10 +24,16 @@ struct FoodListRowItem: View {
    
     @ObservedObject var observer = Observer()
     
+    @Binding var mealType: String
+    
+    @Binding var showFoodPicker: Bool
+    
+    @Binding var totalCalories: Double
+    
+    var date: Date
+    
     var body: some View {
         
-        print(imageURL)
-    
         return AnyView(VStack {
         
             ScrollView {
@@ -79,14 +86,25 @@ struct FoodListRowItem: View {
                         .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
                     
                     Button("Select this food") {
-        //                self.result = ""
-        //                self.selectedImage = nil
-        //                self.showingImagePicker = false
-        //                self.image = nil
-        //                self.confirmUseThisFood = false
-        //                self.originalResult = ""
                         
-                        print("hi")
+                        print("the mealType is: \(mealType)")
+                        
+                        let foodData = Food(context: viewContext)
+                        foodData.foodName = NSString(string: foods.text)
+                        foodData.foodCalories = NSNumber(value: self.calories)
+                        foodData.type = NSString(string: mealType)
+                        foodData.date = date
+                        
+                        do {
+                            try self.viewContext.save()
+
+                            print("SAVED")
+                        } catch {
+                            print(error.localizedDescription)
+                        }
+                        
+                        self.totalCalories += calories
+                        self.showFoodPicker = false
                     }
                     .padding()
                     .frame(width: 300, height: 52)
@@ -102,18 +120,41 @@ struct FoodListRowItem: View {
         })
       
         .onReceive(self.observer.$enteredForeground) { _ in
-               print("App entered foreground!") // do stuff here
+                
             
                 Api().getFoods(food: food, completion: { foods in
                     
                    self.foods = foods
-
-                   self.carbs = foods.parsed[0].food.nutrients.carbs
-                   self.protein = foods.parsed[0].food.nutrients.protein
-                   self.fat = foods.parsed[0].food.nutrients.fat
-                    self.fiber = foods.parsed[0].food.nutrients.fiber ?? 0.0
-                   self.calories = foods.parsed[0].food.nutrients.kcal
-                   self.imageURL = foods.parsed[0].food.image ?? ""
+                    
+                    if let parsed = foods.parsed {
+                        
+                        
+                        
+                        if parsed.count != 0 {
+                            self.carbs = parsed[0].food.nutrients.carbs ?? 0.0
+                            self.protein = parsed[0].food.nutrients.protein ?? 0.0
+                            self.fat = parsed[0].food.nutrients.fat ?? 0.0
+                            self.fiber = parsed[0].food.nutrients.fiber ?? 0.0
+                            self.calories = parsed[0].food.nutrients.kcal ?? 0.0
+                           self.imageURL = parsed[0].food.image ?? ""
+                        }
+                        
+                    }
+                    
+                    if let parsed2 = foods.hints {
+                        
+                        
+                        
+                        if parsed2.count != 0 {
+                            self.carbs = parsed2[0].food.nutrients.carbs ?? 0.0
+                            self.protein = parsed2[0].food.nutrients.protein ?? 0.0
+                            self.fat = parsed2[0].food.nutrients.fat ?? 0.0
+                            self.fiber = parsed2[0].food.nutrients.fiber ?? 0.0
+                            self.calories = parsed2[0].food.nutrients.kcal ?? 0.0
+                           self.imageURL = parsed2[0].food.image ?? ""
+                        }
+                        
+                    }
                })
            }
         

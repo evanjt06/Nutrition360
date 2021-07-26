@@ -25,6 +25,8 @@
 		39B63C3C26965B39001BE6D7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39B63C3B26965B39001BE6D7 /* Preview Assets.xcassets */; };
 		39B63C45269815C7001BE6D7 /* MealsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B63C44269815C7001BE6D7 /* MealsView.swift */; };
 		39B63C48269815D2001BE6D7 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B63C47269815D2001BE6D7 /* ProgressView.swift */; };
+		39EB2CF926AD1B850088F349 /* FoodData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39EB2CF726AD1B850088F349 /* FoodData.xcdatamodeld */; };
+		39EB2CFB26AD4E630088F349 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EB2CFA26AD4E630088F349 /* Persistence.swift */; };
 		8FADAB8B7F36EF3E986E4654 /* Pods_Project17.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C73A88948F53DE7DF9C3A50A /* Pods_Project17.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +50,8 @@
 		39B63C3D26965B39001BE6D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39B63C44269815C7001BE6D7 /* MealsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsView.swift; sourceTree = "<group>"; };
 		39B63C47269815D2001BE6D7 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		39EB2CF826AD1B850088F349 /* FoodData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodData.xcdatamodel; sourceTree = "<group>"; };
+		39EB2CFA26AD4E630088F349 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		C73A88948F53DE7DF9C3A50A /* Pods_Project17.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project17.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E42ABAB17FB7136B1935823D /* Pods-Project17.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project17.release.xcconfig"; path = "Target Support Files/Pods-Project17/Pods-Project17.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,6 +116,8 @@
 				3993026226A3B81100727B9A /* ImageLoader.swift */,
 				3993026426A4DE4200727B9A /* FoodListRowItem.swift */,
 				3993026626A55A5F00727B9A /* UserDefaultsSettings.swift */,
+				39EB2CF726AD1B850088F349 /* FoodData.xcdatamodeld */,
+				39EB2CFA26AD4E630088F349 /* Persistence.swift */,
 			);
 			path = Project17;
 			sourceTree = "<group>";
@@ -263,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39A090F5269EA90100286685 /* Page2.swift in Sources */,
+				39EB2CFB26AD4E630088F349 /* Persistence.swift in Sources */,
 				3991C741269BFA7D00175C86 /* Food101.mlmodel in Sources */,
 				3993026326A3B81100727B9A /* ImageLoader.swift in Sources */,
 				3993026526A4DE4200727B9A /* FoodListRowItem.swift in Sources */,
@@ -275,6 +282,7 @@
 				39B63C3526965B36001BE6D7 /* Project17App.swift in Sources */,
 				3993026726A55A5F00727B9A /* UserDefaultsSettings.swift in Sources */,
 				39A090F3269EA8F600286685 /* Page1.swift in Sources */,
+				39EB2CF926AD1B850088F349 /* FoodData.xcdatamodeld in Sources */,
 				39B63C45269815C7001BE6D7 /* MealsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,6 +506,19 @@
 			productName = "BottomBar-SwiftUI";
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		39EB2CF726AD1B850088F349 /* FoodData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				39EB2CF826AD1B850088F349 /* FoodData.xcdatamodel */,
+			);
+			currentVersion = 39EB2CF826AD1B850088F349 /* FoodData.xcdatamodel */;
+			path = FoodData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 39B63C2926965B36001BE6D7 /* Project object */;
 }

@@ -10,7 +10,9 @@ import SwiftUI
 
 struct GenericFood: Codable {
     var text: String
-    var parsed: [GenericFood_Sub]
+    var parsed: [GenericFood_Sub]?
+    
+    var hints: [GenericFood_Sub]?
 }
 
 struct GenericFood_Sub: Codable {
@@ -25,10 +27,10 @@ struct GenericFood_Sub2: Codable {
 }
 
 struct GenericFood_Nutrients: Codable {
-    var kcal: Double
-   var protein: Double
-   var fat: Double
-   var carbs: Double
+    var kcal: Double?
+   var protein: Double?
+   var fat: Double?
+   var carbs: Double?
     var fiber: Double?
 
    private enum CodingKeys : String, CodingKey {
@@ -57,10 +59,9 @@ class Api {
         
         URLSession.shared.dataTask(with: url!) { data, response, error in
         
-            print("the error is \(error?.localizedDescription)")
             
             let ans = try! JSONDecoder().decode(GenericFood.self, from:  data!)
-            print("the answer is \(ans)")
+            
             DispatchQueue.main.async {
                 completion(ans)
             }

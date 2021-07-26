@@ -10,7 +10,8 @@ import SwiftUI
 struct FoodPicker: View {
     
     @Environment(\.colorScheme) var colorScheme
-
+    @Environment(\.managedObjectContext) private var viewContext
+    
     @State private var sourceType: UIImagePickerController.SourceType?
     @State private var result = ""
     @State private var originalResult = ""
@@ -24,11 +25,24 @@ struct FoodPicker: View {
 
     @State private var autocompletedFoods: [String] = []
     
+    @State var mealType: String
+    
+    @Binding var showFoodPicker: Bool
+    
+    @Binding var totalCalories: Double
+    
+    @State var yesbuttonClicked = false
+    
+    var date: Date
+    
     let model = Food101()
     
     var body: some View {
+        
+        print("\(mealType)")
     
-        VStack {
+        return VStack {
+            
             if let image = image {
 
                 VStack {
@@ -39,12 +53,109 @@ struct FoodPicker: View {
                         .onAppear {
                             self.performImageClassify()
                         }
-                    Text(self.result)
+                    Text(self.result) .font(Font.system(size: 18, weight: .bold, design: .rounded))
+                        .multilineTextAlignment(.center)
+                    
+                    Spacer()
+                           .frame(height: 15)
+                    
+                    if self.confirmUseThisFood == false {
+                        Button("Take another photo") {
+                            
+                            
+                            self.result = ""
+                            self.image = nil
+                            self.selectedImage = nil
+                            self.originalResult = ""
+                            
+                            self.showingImagePicker.toggle()
+                        }
+                        .padding()
+                        .frame(width: 300, height: 52)
+                        .background(Color.blue)
+                        .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
+                    }
+                    
+                    if self.confirmUseThisFood == true {
+                        
+                        if yesbuttonClicked == false {
+                            HStack {
+                                Button("No") {
+                                    
+                                    
+                                    self.result = ""
+                                    self.image = nil
+                                    self.selectedImage = nil
+                                    self.originalResult = ""
+                                    self.confirmUseThisFood = false
+                                    
+                                    self.showingImagePicker.toggle()
+                                }
+                                .padding()
+                                .frame(width: 150, height: 52)
+                                .background(Color.red)
+                                .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
+                                .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
+                                
+                                Spacer()
+                                    .frame(width: 10)
+                                
+                                Button("Yes") {
+                                    
+                                    
+                                    let temp = self.originalResult.replacingOccurrences(of: "_", with: " ")
+
+                                    Api().getAutocompleteList(food: temp) { foods in
+                                        print(foods)
+                                        self.autocompletedFoods = foods
+                                        
+                                        yesbuttonClicked = true
+                                    }
+                                }
+                                .padding()
+                                .frame(width: 150, height: 52)
+                                .background(Color.green)
+                                .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
+                                .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
+                            }
+                        } else {
+                            
+                            if autocompletedFoods.count == 0 {
+                                Text("Sorry, but this food is currently not supported in our app.")
+                                    .padding()
+                                    .multilineTextAlignment(.center)
+                            } else {
+                            
+                                NavigationView {
+                                    List(autocompletedFoods, id: \.self) { food in
+                                        NavigationLink(destination: FoodListRowItem(food: food, mealType: $mealType, showFoodPicker: $showFoodPicker, totalCalories: $totalCalories, date: date)) {
+                                            Text(food)
+                                        }
+                                        .navigationBarTitle("")
+                                        .navigationBarHidden(true)
+                                }
+                                    .navigationBarTitle("")
+                                                .navigationBarHidden(true)
+                                                .navigationBarBackButtonHidden(true)
+                                }
+                            }
+                            
+                        }
+                        
+                        
+                    }
+
                 }
 //
-            } else {
+            }
+            
+            else {
 //
                 VStack {
+                    
+                    Spacer()
+                        .frame(height: 20)
 
                     HStack {
                         VStack(alignment: .leading) {
@@ -103,7 +214,7 @@ struct FoodPicker: View {
                     } else {
                         NavigationView {
                             List(autocompletedFoods, id: \.self) { food in
-                                NavigationLink(destination: FoodListRowItem(food: food)) {
+                                NavigationLink(destination: FoodListRowItem(food: food, mealType: $mealType, showFoodPicker: $showFoodPicker, totalCalories: $totalCalories, date: date)) {
                                     Text(food)
                                 }
                                 .navigationBarTitle("")
@@ -112,27 +223,10 @@ struct FoodPicker: View {
                     }
                 }
                     
-                }
+                    Spacer()
+                    
+                } .navigationBarHidden(true)
 
-            if self.confirmUseThisFood == true {
-                Button("Use this image...") {
-//                    self.result = ""
-//                    self.selectedImage = nil
-//                    self.showingImagePicker = false
-//                    self.image = nil
-//                    self.confirmUseThisFood = false
-//                    self.originalResult = ""
-                    print("used image...")
-                }
-                .padding()
-                .frame(width: 300, height: 52)
-                .background(Color.blue)
-                .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
-                .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
-            }
-
-            Spacer()
-                   .frame(height: 20)
         }
         }
         .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
@@ -164,19 +258,11 @@ struct FoodPicker: View {
             }
             
             self.confirmUseThisFood = true
-            self.result = "Scanned food: \(result), Accuracy: \(String(confidenceRate).prefix(3))%."
+            self.result = "Scanned food: \(result) \n Accuracy: \(String(confidenceRate).prefix(4))%"
+            
            }
        
        }
     
 }
-
-struct FoodPicker_Previews: PreviewProvider {
-    static var previews: some View {
-        FoodPicker()
-    }
-}
-
-
-
 

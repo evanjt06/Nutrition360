@@ -27,7 +27,7 @@ struct BasicView_1: View {
         dateFormatter.timeStyle = .none
         
         return VStack {
-            MealsView()
+            MealsView(date: $date)
                 .navigationBarTitle(
 
                     Text("\(dateFormatter.string(from: date))")
@@ -91,7 +91,7 @@ struct ContentView: View {
     //        }
             a.insteadOfCyclingToFirstPage = {
                 
-                print(name,gender)
+                
                 
                 withAnimation {
                     self.hasSceneOnboardingScreen = true
