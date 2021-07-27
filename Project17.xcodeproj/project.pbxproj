@@ -25,6 +25,8 @@
 		39B63C3C26965B39001BE6D7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39B63C3B26965B39001BE6D7 /* Preview Assets.xcassets */; };
 		39B63C45269815C7001BE6D7 /* MealsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B63C44269815C7001BE6D7 /* MealsView.swift */; };
 		39B63C48269815D2001BE6D7 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B63C47269815D2001BE6D7 /* ProgressView.swift */; };
+		39DB52C326AF54D50085AEBC /* SwiftSpeech in Frameworks */ = {isa = PBXBuildFile; productRef = 39DB52C226AF54D50085AEBC /* SwiftSpeech */; };
+		39DB52C526AF78D20085AEBC /* SpeechView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DB52C426AF78D20085AEBC /* SpeechView.swift */; };
 		39EB2CF926AD1B850088F349 /* FoodData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39EB2CF726AD1B850088F349 /* FoodData.xcdatamodeld */; };
 		39EB2CFB26AD4E630088F349 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EB2CFA26AD4E630088F349 /* Persistence.swift */; };
 		8FADAB8B7F36EF3E986E4654 /* Pods_Project17.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C73A88948F53DE7DF9C3A50A /* Pods_Project17.framework */; };
@@ -50,6 +52,7 @@
 		39B63C3D26965B39001BE6D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39B63C44269815C7001BE6D7 /* MealsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsView.swift; sourceTree = "<group>"; };
 		39B63C47269815D2001BE6D7 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		39DB52C426AF78D20085AEBC /* SpeechView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechView.swift; sourceTree = "<group>"; };
 		39EB2CF826AD1B850088F349 /* FoodData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodData.xcdatamodel; sourceTree = "<group>"; };
 		39EB2CFA26AD4E630088F349 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		C73A88948F53DE7DF9C3A50A /* Pods_Project17.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project17.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39DB52C326AF54D50085AEBC /* SwiftSpeech in Frameworks */,
 				39A090FA26A0191300286685 /* BottomBar-SwiftUI in Frameworks */,
 				8FADAB8B7F36EF3E986E4654 /* Pods_Project17.framework in Frameworks */,
 				39A090F0269E9F7400286685 /* SwiftUICharts in Frameworks */,
@@ -118,6 +122,7 @@
 				3993026626A55A5F00727B9A /* UserDefaultsSettings.swift */,
 				39EB2CF726AD1B850088F349 /* FoodData.xcdatamodeld */,
 				39EB2CFA26AD4E630088F349 /* Persistence.swift */,
+				39DB52C426AF78D20085AEBC /* SpeechView.swift */,
 			);
 			path = Project17;
 			sourceTree = "<group>";
@@ -168,6 +173,7 @@
 			packageProductDependencies = (
 				39A090EF269E9F7400286685 /* SwiftUICharts */,
 				39A090F926A0191300286685 /* BottomBar-SwiftUI */,
+				39DB52C226AF54D50085AEBC /* SwiftSpeech */,
 			);
 			productName = Project17;
 			productReference = 39B63C3126965B36001BE6D7 /* Project17.app */;
@@ -199,6 +205,7 @@
 			packageReferences = (
 				39A090EE269E9F7300286685 /* XCRemoteSwiftPackageReference "ChartView" */,
 				39A090F826A0191300286685 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */,
+				39DB52C126AF54D50085AEBC /* XCRemoteSwiftPackageReference "SwiftSpeech" */,
 			);
 			productRefGroup = 39B63C3226965B36001BE6D7 /* Products */;
 			projectDirPath = "";
@@ -274,6 +281,7 @@
 				3993026326A3B81100727B9A /* ImageLoader.swift in Sources */,
 				3993026526A4DE4200727B9A /* FoodListRowItem.swift in Sources */,
 				3991C743269BFAA700175C86 /* FoodPicker.swift in Sources */,
+				39DB52C526AF78D20085AEBC /* SpeechView.swift in Sources */,
 				3993026126A3921F00727B9A /* GenericFood.swift in Sources */,
 				39B63C3726965B36001BE6D7 /* ContentView.swift in Sources */,
 				39B63C48269815D2001BE6D7 /* ProgressView.swift in Sources */,
@@ -492,6 +500,14 @@
 				kind = branch;
 			};
 		};
+		39DB52C126AF54D50085AEBC /* XCRemoteSwiftPackageReference "SwiftSpeech" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Cay-Zhang/SwiftSpeech";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -504,6 +520,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 39A090F826A0191300286685 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */;
 			productName = "BottomBar-SwiftUI";
+		};
+		39DB52C226AF54D50085AEBC /* SwiftSpeech */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39DB52C126AF54D50085AEBC /* XCRemoteSwiftPackageReference "SwiftSpeech" */;
+			productName = SwiftSpeech;
 		};
 /* End XCSwiftPackageProductDependency section */
 

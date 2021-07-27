@@ -81,7 +81,19 @@ struct MealsView: View {
                                     .font(Font.system(size: 18, weight: .bold, design: .rounded))
                             }
                         }
-                    }
+                    }.onDelete(perform: { indexSet in
+                        let di = data[indexSet.first!]
+                        
+                        self.viewContext.delete(di)
+                        
+                        do {
+                            try self.viewContext.save()
+                        } catch {
+                            print(error.localizedDescription)
+                        }
+                    })
+                    
+                    
                 }
                 Section {
                     Text("Lunch")
@@ -119,7 +131,17 @@ struct MealsView: View {
                                     .font(Font.system(size: 18, weight: .bold, design: .rounded))
                             }
                         }
-                    }
+                    }.onDelete(perform: { indexSet in
+                        let di = data[indexSet.first!]
+                        
+                        self.viewContext.delete(di)
+                        
+                        do {
+                            try self.viewContext.save()
+                        } catch {
+                            print(error.localizedDescription)
+                        }
+                    })
                 }
                 Section {
                     Text("Dinner")
@@ -158,7 +180,17 @@ struct MealsView: View {
                                     .font(Font.system(size: 18, weight: .bold, design: .rounded))
                             }
                         }
-                    }
+                    }.onDelete(perform: { indexSet in
+                        let di = data[indexSet.first!]
+                        
+                        self.viewContext.delete(di)
+                        
+                        do {
+                            try self.viewContext.save()
+                        } catch {
+                            print(error.localizedDescription)
+                        }
+                    })
                 }
                 Section {
                     Text("Snacks")
@@ -197,7 +229,17 @@ struct MealsView: View {
                                     .font(Font.system(size: 18, weight: .bold, design: .rounded))
                             }
                         }
-                    }
+                    }.onDelete(perform: { indexSet in
+                        let di = data[indexSet.first!]
+                        
+                        self.viewContext.delete(di)
+                        
+                        do {
+                            try self.viewContext.save()
+                        } catch {
+                            print(error.localizedDescription)
+                        }
+                    })
                 }
                 
                 Section {

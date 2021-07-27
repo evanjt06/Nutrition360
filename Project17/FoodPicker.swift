@@ -7,7 +7,23 @@
 
 import SwiftUI
 
+enum ActiveSheet: Identifiable {
+    case first, second
+    
+    var id: Int {
+        hashValue
+    }
+}
+
+extension UIScreen{
+   static let screenWidth = UIScreen.main.bounds.size.width
+   static let screenHeight = UIScreen.main.bounds.size.height
+   static let screenSize = UIScreen.main.bounds.size
+}
+
 struct FoodPicker: View {
+    
+    @State var activeSheet: ActiveSheet?
     
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.managedObjectContext) private var viewContext
@@ -17,7 +33,6 @@ struct FoodPicker: View {
     @State private var originalResult = ""
     @State private var image: Image?
     @State private var selectedImage: UIImage?
-    @State private var showingImagePicker = false
     
     @State private var confirmUseThisFood = false
     
@@ -39,8 +54,10 @@ struct FoodPicker: View {
     
     var body: some View {
         
-        print("\(mealType)")
-    
+        if showFoodPicker == false {
+            UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true, completion: nil)
+        }
+        
         return VStack {
             
             if let image = image {
@@ -68,7 +85,7 @@ struct FoodPicker: View {
                             self.selectedImage = nil
                             self.originalResult = ""
                             
-                            self.showingImagePicker.toggle()
+                            activeSheet = .first
                         }
                         .padding()
                         .frame(width: 300, height: 52)
@@ -90,7 +107,7 @@ struct FoodPicker: View {
                                     self.originalResult = ""
                                     self.confirmUseThisFood = false
                                     
-                                    self.showingImagePicker.toggle()
+                                    activeSheet = .first
                                 }
                                 .padding()
                                 .frame(width: 150, height: 52)
@@ -107,7 +124,7 @@ struct FoodPicker: View {
                                     let temp = self.originalResult.replacingOccurrences(of: "_", with: " ")
 
                                     Api().getAutocompleteList(food: temp) { foods in
-                                        print(foods)
+                                        
                                         self.autocompletedFoods = foods
                                         
                                         yesbuttonClicked = true
@@ -158,24 +175,59 @@ struct FoodPicker: View {
                         .frame(height: 20)
 
                     HStack {
-                        VStack(alignment: .leading) {
-                            Button(action: {
-                                self.sourceType = .camera
-                                self.showingImagePicker.toggle()
-                            }) {
-                                Image(systemName: "camera")
-                                Text("Scan")
+                       
+                            VStack(alignment: .leading) {
+                                Button(action: {
+                                    self.sourceType = .camera
+//                                    self.showingImagePicker.toggle()
+                                    
+                                    activeSheet = .first
+                                }) {
+                                    Image(systemName: "camera")
+                                    Text("Scan food")  .multilineTextAlignment(.center)
+                                }
+                                .frame(width: UIScreen.screenWidth / 2.4)
+                                .multilineTextAlignment(.center)
                             }
-                        }
-                        .padding(10)
-
-                        .background(colorScheme == .dark ? Color.white : Color.black)
-                        .cornerRadius(25)
-                        .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
-                        .onTapGesture {
-                            self.sourceType = .camera
-                            self.showingImagePicker.toggle()
-                        }
+                            .padding(10)
+                            .background(colorScheme == .dark ? Color.white : Color.black)
+                            .cornerRadius(10)
+                            .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
+                            .onTapGesture {
+                                self.sourceType = .camera
+//                                self.showingImagePicker.toggle()
+                                
+                                activeSheet = .first
+                            }
+                            
+                            VStack(alignment: .leading) {
+                                Button(action: {
+//                                    self.sourceType = .camera
+//                                    self.showingImagePicker.toggle()
+                                    
+                                    activeSheet = .second
+                                }) {
+                                    Image(systemName: "waveform.circle")
+                                    Text("Use voice")  .multilineTextAlignment(.center)
+                                }
+                                .frame(width: UIScreen.screenWidth / 2.4)
+                                .multilineTextAlignment(.center)
+                            }
+                            .padding(10)
+                            .background(Color.blue)
+                            .cornerRadius(10)
+                            .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
+                            .onTapGesture {
+                                self.sourceType = .camera
+//                                self.showingImagePicker.toggle()
+                                
+                                activeSheet = .second
+                            }
+                            
+                       
+                    }
+                    
+                    HStack {
 
                         HStack {
                             TextField("Search for foods...", text: $text)
@@ -184,7 +236,7 @@ struct FoodPicker: View {
                                   .cornerRadius(8)
                         }
 
-                        Button("Done") {
+                        Button("Search") {
 
                             Api().getAutocompleteList(food: text) { foods in
                                 self.autocompletedFoods = foods
@@ -229,9 +281,18 @@ struct FoodPicker: View {
 
         }
         }
-        .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
-            ImagePicker(selectedImage: self.$selectedImage, sourceType: self.sourceType ?? .camera)
+        .sheet(item: $activeSheet, onDismiss: loadImage) { item in
+                    switch item {
+                    case .first:
+                        ImagePicker(selectedImage: self.$selectedImage, sourceType: self.sourceType ?? .camera)
+                    case .second:
+                        SpeechView(mealType: $mealType, showFoodPicker: $showFoodPicker, totalCalories: $totalCalories, date: date)
+                }
+//        .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+//            ImagePicker(selectedImage: self.$selectedImage, sourceType: self.sourceType ?? .camera)
+//        }
         }
+ 
         
     }
     
