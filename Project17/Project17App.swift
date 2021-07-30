@@ -15,6 +15,16 @@ struct Project17App: App {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .onAppear {
+                    let defaults = UserDefaults.standard
+                    
+                    print(
+                        defaults.bool(forKey: "showingIntroPopUp"),
+                        defaults.bool(forKey: "hasSeenOnboarding"),
+                        defaults.string(forKey: "name"),
+                        defaults.string(forKey: "gender")
+                    )
+                }
         }
     }
 }

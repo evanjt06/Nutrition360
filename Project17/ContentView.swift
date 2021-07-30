@@ -52,12 +52,23 @@ struct BasicView_2: View {
         return VStack {
             ProgressView()
                 .navigationBarTitle("Progress")
+                .navigationBarItems(trailing: EmptyView())
         }
     }
 }
 
 
 struct ContentView: View {
+   
+    init() {
+        let defaults = UserDefaults.standard
+        
+        self.hasSceneOnboardingScreen = defaults.bool(forKey: "hasSeenOnboarding")
+        self.showingIntroPopup = defaults.bool(forKey: "showingIntroPopUp")
+        self.name = defaults.string(forKey: "name") ?? ""
+        self.gender = defaults.string(forKey: "gender") ?? ""
+        
+    }
     
     @State private var selectedIndex: Int = 0
 
@@ -65,14 +76,18 @@ struct ContentView: View {
             items[selectedIndex]
         }
     
-    @State private var hasSceneOnboardingScreen = true
+    @State private var hasSceneOnboardingScreen: Bool
+    @State private var showingIntroPopup: Bool
+    @State private var name: String
+    @State private var gender: String
     
-    @State private var name = ""
-    @State private var gender = ""
+    @State private var showAlert = false
     
-    @State private var showingIntroPopup = false
+    @State private var fakeAlertNeverToBeTouched = false
     
     var body: some View {
+        
+        print(hasSceneOnboardingScreen, showingIntroPopup)
 
         if !hasSceneOnboardingScreen {
            
@@ -91,18 +106,32 @@ struct ContentView: View {
     //        }
             a.insteadOfCyclingToFirstPage = {
                 
+                print("done!")
                 
-                
-                withAnimation {
-                    self.hasSceneOnboardingScreen = true
+                if self.name == "" || self.gender == "" {
+                    showAlert = true
+                    return
                 }
+                
+                // assign to user defaults now
+                let defaults = UserDefaults.standard
+                defaults.set(self.name, forKey: "name")
+                defaults.set(self.gender, forKey: "gender")
+                defaults.set(true, forKey: "hasSeenOnboarding")
+                
+                showingIntroPopup = true
+                hasSceneOnboardingScreen = true
             }
             a.animationDidEnd = {
 
             }
             a.didGoToLastPage = {
             }
-            return AnyView(a)
+            return AnyView(
+                a
+            ).alert(isPresented: $showAlert) {
+                Alert(title: Text("Nutrition360 - Error"), message: Text("You must fill out your name and biological sex."), dismissButton: .default(Text("OK")))
+            }
             
         } else {
             return AnyView(
@@ -124,26 +153,24 @@ struct ContentView: View {
 
                 }
                 .popup(isPresented: $showingIntroPopup, type: .`default`, closeOnTap: false) {
-                    VStack(spacing: 10) {
-                                Image("screen 1")
-                                    .resizable()
-                                    .aspectRatio(contentMode: ContentMode.fit)
-                                    .frame(width: 100, height: 100)
+                        VStack(spacing: 10) {
+                            Text("Hi \(self.name)!")
+                                        .foregroundColor(.white)
+                                        .fontWeight(.bold)
 
-                                Text("Hi Evan!")
-                                    .foregroundColor(.white)
-                                    .fontWeight(.bold)
-
-                                Text("In this example floats are set to disappear after 2 seconds. Tap the toasts to dismiss or just open some other popup - previous one will be dismissed. This popup will only be closed if you tap the button.")
+                                Text("This app allows you to add foods you have eaten in four sections: Breakfast, Lunch, Dinner, and Snacks. Your meals will be tracked everyday, and you may also choose and pick the day on the calendar. Additionally, you have the ability to take a picture of your food and the app will insert into the food log. You may also use the voice option to speak into the mic to insert your food. Nutritional details will be provided for each food you input. You can also look at your progress (progression in caloric intake) over a prolonged period of time. Happy tracking!")
                                     .fixedSize(horizontal: false, vertical: true)
                                     .font(.system(size: 14))
-                                    .foregroundColor(Color(red: 0.9, green: 0.9, blue: 0.9))
+                                    .foregroundColor(.white)
                                     .lineLimit(nil)
 
                                 Spacer()
 
                                 Button(action: {
-                                    self.showingIntroPopup = false
+                                    let defaults = UserDefaults.standard
+                                    defaults.set(false, forKey: "showingIntroPopUp")
+                                    
+                                    showingIntroPopup = false
                                 }) {
                                     Text("Got it")
                                         .font(.system(size: 14))
@@ -154,15 +181,17 @@ struct ContentView: View {
                                 .background(Color.white)
                                 .cornerRadius(20.0)
                             }
-                            .padding(EdgeInsets(top: 70, leading: 20, bottom: 40, trailing: 20))
+                            .padding(EdgeInsets(top: 50, leading: 20, bottom: 40, trailing: 20))
                             .frame(width: 300, height: 400)
-                    .background(Color.orange)
+                            .background(Color.orange)
                             .cornerRadius(10.0)
                             .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.13), radius: 10.0)
                     }
             
             
-            )}
+            ).alert(isPresented: $fakeAlertNeverToBeTouched) {
+                Alert(title: Text(""), message: Text(""), dismissButton: .default(Text("OK")))
+            }}
 }
 }
 

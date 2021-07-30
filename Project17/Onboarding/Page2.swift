@@ -47,7 +47,7 @@ struct Page2: View {
                 
                 Spacer().frame(height:30)
                 
-            Text("What is your gender?")
+            Text("What is your biological sex?")
                 .fixedSize(horizontal: false, vertical: true)
                 .font(Font.system(size: 18, weight: .bold, design: .rounded))
                 .foregroundColor(.black)

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 extension Date {
     func get(_ components: Calendar.Component..., calendar: Calendar = Calendar.current) -> DateComponents {
@@ -28,8 +29,20 @@ struct MealsView: View {
     @Binding var date: Date
     
     var computedTotalCalories: Double {
-        var count = 0
         
+//        delete records:
+//        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Food")
+//        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+//
+//        let container = PersistenceController.shared.container
+//        do {
+//            try container.viewContext.execute(deleteRequest)
+//        } catch let error as NSError {
+//            // TODO: handle the error
+//        }
+        
+        var count = 0
+
         for x in data {
             if dateCheckValid(data: x.date) {
                 count += Int(x.foodCalories)
@@ -73,12 +86,14 @@ struct MealsView: View {
                         
                         if x.type == "Breakfast" && dateCheckValid(data: x.date) {
                             HStack {
-                                Text("\(x.foodName)".firstCapitalized)
-                                    .font(Font.system(size: 18, design: .rounded))
+                                NavigationLink(destination: FoodNutritionView(food: "\(x.foodName)".firstCapitalized)) {
+                                    Text("\(x.foodName)".firstCapitalized)
+                                        .font(Font.system(size: 18, design: .rounded))
+                                    Spacer()
+                                    Text("\(x.foodCalories.intValue) cal")
+                                        .font(Font.system(size: 18, weight: .bold, design: .rounded))
                                     
-                                Spacer()
-                                Text("\(x.foodCalories.intValue) cal")
-                                    .font(Font.system(size: 18, weight: .bold, design: .rounded))
+                                }
                             }
                         }
                     }.onDelete(perform: { indexSet in
@@ -123,12 +138,14 @@ struct MealsView: View {
                     ForEach(self.data) { x in
                         if x.type == "Lunch"  && dateCheckValid(data: x.date) {
                             HStack {
-                                Text("\(x.foodName)".firstCapitalized)
-                                    .font(Font.system(size: 18, design: .rounded))
+                                NavigationLink(destination: FoodNutritionView(food: "\(x.foodName)".firstCapitalized)) {
+                                    Text("\(x.foodName)".firstCapitalized)
+                                        .font(Font.system(size: 18, design: .rounded))
+                                    Spacer()
+                                    Text("\(x.foodCalories.intValue) cal")
+                                        .font(Font.system(size: 18, weight: .bold, design: .rounded))
                                     
-                                Spacer()
-                                Text("\(x.foodCalories.intValue) cal")
-                                    .font(Font.system(size: 18, weight: .bold, design: .rounded))
+                                }
                             }
                         }
                     }.onDelete(perform: { indexSet in
@@ -172,12 +189,14 @@ struct MealsView: View {
                     ForEach(self.data) { x in
                         if x.type == "Dinner" && dateCheckValid(data: x.date) {
                             HStack {
-                                Text("\(x.foodName)".firstCapitalized)
-                                    .font(Font.system(size: 18, design: .rounded))
+                                NavigationLink(destination: FoodNutritionView(food: "\(x.foodName)".firstCapitalized)) {
+                                    Text("\(x.foodName)".firstCapitalized)
+                                        .font(Font.system(size: 18, design: .rounded))
+                                    Spacer()
+                                    Text("\(x.foodCalories.intValue) cal")
+                                        .font(Font.system(size: 18, weight: .bold, design: .rounded))
                                     
-                                Spacer()
-                                Text("\(x.foodCalories.intValue) cal")
-                                    .font(Font.system(size: 18, weight: .bold, design: .rounded))
+                                }
                             }
                         }
                     }.onDelete(perform: { indexSet in
@@ -221,12 +240,14 @@ struct MealsView: View {
                     ForEach(self.data) { x in
                         if x.type == "Snacks" && dateCheckValid(data: x.date) {
                             HStack {
-                                Text("\(x.foodName)".firstCapitalized)
-                                    .font(Font.system(size: 18, design: .rounded))
+                                NavigationLink(destination: FoodNutritionView(food: "\(x.foodName)".firstCapitalized)) {
+                                    Text("\(x.foodName)".firstCapitalized)
+                                        .font(Font.system(size: 18, design: .rounded))
+                                    Spacer()
+                                    Text("\(x.foodCalories.intValue) cal")
+                                        .font(Font.system(size: 18, weight: .bold, design: .rounded))
                                     
-                                Spacer()
-                                Text("\(x.foodCalories.intValue) cal")
-                                    .font(Font.system(size: 18, weight: .bold, design: .rounded))
+                                }
                             }
                         }
                     }.onDelete(perform: { indexSet in

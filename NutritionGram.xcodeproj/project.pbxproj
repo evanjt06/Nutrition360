@@ -15,10 +15,17 @@
 		3993026326A3B81100727B9A /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3993026226A3B81100727B9A /* ImageLoader.swift */; };
 		3993026526A4DE4200727B9A /* FoodListRowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3993026426A4DE4200727B9A /* FoodListRowItem.swift */; };
 		3993026726A55A5F00727B9A /* UserDefaultsSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3993026626A55A5F00727B9A /* UserDefaultsSettings.swift */; };
-		39A090F0269E9F7400286685 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 39A090EF269E9F7400286685 /* SwiftUICharts */; };
 		39A090F3269EA8F600286685 /* Page1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A090F2269EA8F600286685 /* Page1.swift */; };
 		39A090F5269EA90100286685 /* Page2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A090F4269EA90100286685 /* Page2.swift */; };
 		39A090FA26A0191300286685 /* BottomBar-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 39A090F926A0191300286685 /* BottomBar-SwiftUI */; };
+		39B05B2726B39D3900471079 /* DataPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B05B2626B39D3900471079 /* DataPoint.swift */; };
+		39B05B2926B39D5800471079 /* ChartStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B05B2826B39D5800471079 /* ChartStyle.swift */; };
+		39B05B2B26B39D8200471079 /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B05B2A26B39D8200471079 /* BarChartView.swift */; };
+		39B05B2D26B3A00700471079 /* LegendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B05B2C26B3A00700471079 /* LegendView.swift */; };
+		39B05B2F26B3A01800471079 /* ChartGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B05B2E26B3A01800471079 /* ChartGrid.swift */; };
+		39B05B3126B3A04C00471079 /* AxisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B05B3026B3A04C00471079 /* AxisView.swift */; };
+		39B05B3326B3A06000471079 /* BarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B05B3226B3A06000471079 /* BarsView.swift */; };
+		39B05B3526B3A08500471079 /* LabelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B05B3426B3A08500471079 /* LabelsView.swift */; };
 		39B63C3526965B36001BE6D7 /* Project17App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B63C3426965B36001BE6D7 /* Project17App.swift */; };
 		39B63C3726965B36001BE6D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B63C3626965B36001BE6D7 /* ContentView.swift */; };
 		39B63C3926965B39001BE6D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39B63C3826965B39001BE6D7 /* Assets.xcassets */; };
@@ -27,6 +34,7 @@
 		39B63C48269815D2001BE6D7 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B63C47269815D2001BE6D7 /* ProgressView.swift */; };
 		39DB52C326AF54D50085AEBC /* SwiftSpeech in Frameworks */ = {isa = PBXBuildFile; productRef = 39DB52C226AF54D50085AEBC /* SwiftSpeech */; };
 		39DB52C526AF78D20085AEBC /* SpeechView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DB52C426AF78D20085AEBC /* SpeechView.swift */; };
+		39DB52C726B34FBB0085AEBC /* FoodNutritionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DB52C626B34FBB0085AEBC /* FoodNutritionView.swift */; };
 		39EB2CF926AD1B850088F349 /* FoodData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39EB2CF726AD1B850088F349 /* FoodData.xcdatamodeld */; };
 		39EB2CFB26AD4E630088F349 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EB2CFA26AD4E630088F349 /* Persistence.swift */; };
 		8FADAB8B7F36EF3E986E4654 /* Pods_Project17.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C73A88948F53DE7DF9C3A50A /* Pods_Project17.framework */; };
@@ -44,6 +52,14 @@
 		3993026626A55A5F00727B9A /* UserDefaultsSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsSettings.swift; sourceTree = "<group>"; };
 		39A090F2269EA8F600286685 /* Page1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page1.swift; sourceTree = "<group>"; };
 		39A090F4269EA90100286685 /* Page2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page2.swift; sourceTree = "<group>"; };
+		39B05B2626B39D3900471079 /* DataPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPoint.swift; sourceTree = "<group>"; };
+		39B05B2826B39D5800471079 /* ChartStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartStyle.swift; sourceTree = "<group>"; };
+		39B05B2A26B39D8200471079 /* BarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
+		39B05B2C26B3A00700471079 /* LegendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegendView.swift; sourceTree = "<group>"; };
+		39B05B2E26B3A01800471079 /* ChartGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartGrid.swift; sourceTree = "<group>"; };
+		39B05B3026B3A04C00471079 /* AxisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxisView.swift; sourceTree = "<group>"; };
+		39B05B3226B3A06000471079 /* BarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarsView.swift; sourceTree = "<group>"; };
+		39B05B3426B3A08500471079 /* LabelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsView.swift; sourceTree = "<group>"; };
 		39B63C3126965B36001BE6D7 /* NutritionGram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NutritionGram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39B63C3426965B36001BE6D7 /* Project17App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project17App.swift; sourceTree = "<group>"; };
 		39B63C3626965B36001BE6D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +69,7 @@
 		39B63C44269815C7001BE6D7 /* MealsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsView.swift; sourceTree = "<group>"; };
 		39B63C47269815D2001BE6D7 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		39DB52C426AF78D20085AEBC /* SpeechView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechView.swift; sourceTree = "<group>"; };
+		39DB52C626B34FBB0085AEBC /* FoodNutritionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodNutritionView.swift; sourceTree = "<group>"; };
 		39EB2CF826AD1B850088F349 /* FoodData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodData.xcdatamodel; sourceTree = "<group>"; };
 		39EB2CFA26AD4E630088F349 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		C73A88948F53DE7DF9C3A50A /* Pods_Project17.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project17.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,7 +84,6 @@
 				39DB52C326AF54D50085AEBC /* SwiftSpeech in Frameworks */,
 				39A090FA26A0191300286685 /* BottomBar-SwiftUI in Frameworks */,
 				8FADAB8B7F36EF3E986E4654 /* Pods_Project17.framework in Frameworks */,
-				39A090F0269E9F7400286685 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +97,21 @@
 				39A090F4269EA90100286685 /* Page2.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		39B05B2526B39D2400471079 /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				39B05B2626B39D3900471079 /* DataPoint.swift */,
+				39B05B2826B39D5800471079 /* ChartStyle.swift */,
+				39B05B2A26B39D8200471079 /* BarChartView.swift */,
+				39B05B2C26B3A00700471079 /* LegendView.swift */,
+				39B05B2E26B3A01800471079 /* ChartGrid.swift */,
+				39B05B3026B3A04C00471079 /* AxisView.swift */,
+				39B05B3226B3A06000471079 /* BarsView.swift */,
+				39B05B3426B3A08500471079 /* LabelsView.swift */,
+			);
+			path = Charts;
 			sourceTree = "<group>";
 		};
 		39B63C2826965B36001BE6D7 = {
@@ -104,6 +135,7 @@
 		39B63C3326965B36001BE6D7 /* Project17 */ = {
 			isa = PBXGroup;
 			children = (
+				39B05B2526B39D2400471079 /* Charts */,
 				39A090F1269EA8DE00286685 /* Onboarding */,
 				3991C740269BFA7D00175C86 /* Food101.mlmodel */,
 				39B63C3426965B36001BE6D7 /* Project17App.swift */,
@@ -123,6 +155,7 @@
 				39EB2CF726AD1B850088F349 /* FoodData.xcdatamodeld */,
 				39EB2CFA26AD4E630088F349 /* Persistence.swift */,
 				39DB52C426AF78D20085AEBC /* SpeechView.swift */,
+				39DB52C626B34FBB0085AEBC /* FoodNutritionView.swift */,
 			);
 			path = Project17;
 			sourceTree = "<group>";
@@ -171,7 +204,6 @@
 			);
 			name = NutritionGram;
 			packageProductDependencies = (
-				39A090EF269E9F7400286685 /* SwiftUICharts */,
 				39A090F926A0191300286685 /* BottomBar-SwiftUI */,
 				39DB52C226AF54D50085AEBC /* SwiftSpeech */,
 			);
@@ -203,7 +235,6 @@
 			);
 			mainGroup = 39B63C2826965B36001BE6D7;
 			packageReferences = (
-				39A090EE269E9F7300286685 /* XCRemoteSwiftPackageReference "ChartView" */,
 				39A090F826A0191300286685 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */,
 				39DB52C126AF54D50085AEBC /* XCRemoteSwiftPackageReference "SwiftSpeech" */,
 			);
@@ -276,21 +307,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				39A090F5269EA90100286685 /* Page2.swift in Sources */,
+				39B05B3526B3A08500471079 /* LabelsView.swift in Sources */,
+				39B05B3126B3A04C00471079 /* AxisView.swift in Sources */,
+				39DB52C726B34FBB0085AEBC /* FoodNutritionView.swift in Sources */,
 				39EB2CFB26AD4E630088F349 /* Persistence.swift in Sources */,
+				39B05B2F26B3A01800471079 /* ChartGrid.swift in Sources */,
 				3991C741269BFA7D00175C86 /* Food101.mlmodel in Sources */,
+				39B05B3326B3A06000471079 /* BarsView.swift in Sources */,
 				3993026326A3B81100727B9A /* ImageLoader.swift in Sources */,
+				39B05B2D26B3A00700471079 /* LegendView.swift in Sources */,
 				3993026526A4DE4200727B9A /* FoodListRowItem.swift in Sources */,
 				3991C743269BFAA700175C86 /* FoodPicker.swift in Sources */,
 				39DB52C526AF78D20085AEBC /* SpeechView.swift in Sources */,
 				3993026126A3921F00727B9A /* GenericFood.swift in Sources */,
 				39B63C3726965B36001BE6D7 /* ContentView.swift in Sources */,
 				39B63C48269815D2001BE6D7 /* ProgressView.swift in Sources */,
+				39B05B2B26B39D8200471079 /* BarChartView.swift in Sources */,
 				3991C73D269BFA4A00175C86 /* ImagePicker.swift in Sources */,
 				3991C73F269BFA6800175C86 /* UIImage+Extensions.swift in Sources */,
 				39B63C3526965B36001BE6D7 /* Project17App.swift in Sources */,
+				39B05B2726B39D3900471079 /* DataPoint.swift in Sources */,
 				3993026726A55A5F00727B9A /* UserDefaultsSettings.swift in Sources */,
 				39A090F3269EA8F600286685 /* Page1.swift in Sources */,
 				39EB2CF926AD1B850088F349 /* FoodData.xcdatamodeld in Sources */,
+				39B05B2926B39D5800471079 /* ChartStyle.swift in Sources */,
 				39B63C45269815C7001BE6D7 /* MealsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -484,14 +524,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		39A090EE269E9F7300286685 /* XCRemoteSwiftPackageReference "ChartView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AppPear/ChartView";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = "2.0.0-beta.1";
-			};
-		};
 		39A090F826A0191300286685 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/smartvipere75/bottombar-swiftui";
@@ -511,11 +543,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		39A090EF269E9F7400286685 /* SwiftUICharts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 39A090EE269E9F7300286685 /* XCRemoteSwiftPackageReference "ChartView" */;
-			productName = SwiftUICharts;
-		};
 		39A090F926A0191300286685 /* BottomBar-SwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 39A090F826A0191300286685 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */;

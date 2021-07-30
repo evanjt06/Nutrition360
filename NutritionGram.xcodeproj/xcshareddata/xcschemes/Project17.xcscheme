@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "39B63C3026965B36001BE6D7"
-               BuildableName = "Project17.app"
-               BlueprintName = "Project17"
+               BuildableName = "NutritionGram.app"
+               BlueprintName = "NutritionGram"
                ReferencedContainer = "container:NutritionGram.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "39B63C3026965B36001BE6D7"
-            BuildableName = "Project17.app"
-            BlueprintName = "Project17"
+            BuildableName = "NutritionGram.app"
+            BlueprintName = "NutritionGram"
             ReferencedContainer = "container:NutritionGram.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -72,8 +72,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "39B63C3026965B36001BE6D7"
-            BuildableName = "Project17.app"
-            BlueprintName = "Project17"
+            BuildableName = "NutritionGram.app"
+            BlueprintName = "NutritionGram"
             ReferencedContainer = "container:NutritionGram.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

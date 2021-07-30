@@ -88,7 +88,7 @@ struct FoodListRowItem: View {
                     Button("Select this food") {
                         
                         print("the mealType is: \(mealType)")
-                        
+
                         let foodData = Food(context: viewContext)
                         foodData.foodName = NSString(string: foods.text)
                         foodData.foodCalories = NSNumber(value: self.calories)
@@ -100,7 +100,7 @@ struct FoodListRowItem: View {
 
                             print("SAVED")
                         } catch {
-                            print(error.localizedDescription)
+                            print("FoodListRowItem (103) - \(error.localizedDescription)")
                         }
                         
                         self.totalCalories += calories

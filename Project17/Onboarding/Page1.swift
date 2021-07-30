@@ -15,7 +15,7 @@ struct Page1: View {
         let aspect = size.width / size.height
         
         return VStack(alignment: .center, spacing: 50) {
-            Text("Welcome to NutritionGram")
+            Text("Welcome to Nutrition360!")
                 .fixedSize(horizontal: false, vertical: true)
                 .font(Font.system(size: 40, weight: .bold, design: .rounded))
                 .foregroundColor(.white)
@@ -29,7 +29,7 @@ struct Page1: View {
                 .cornerRadius(40)
                 .clipped()
 
-            Text("A nutrition-oriented app that helps track foods eaten everyday as well as caloric intake.")
+            Text("Nutrition360 is a nutrition-oriented app that helps track the foods you eat daily as well as your caloric intake.")
                 .fixedSize(horizontal: false, vertical: true)
                 .font(Font.system(size: 18, weight: .bold, design: .rounded))
                 .foregroundColor(.white)
