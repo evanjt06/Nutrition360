@@ -23,6 +23,8 @@ struct Transaction {
     static var days: [String] = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"]
     
     static var allTransactions: [Transaction] {
+        
+//        todo input custom logic to fetch and create the final Transaction array[]
         [
             Transaction(week: "7/11/21 - 7/17/21", day: 0, calories: 300),
             Transaction(week: "7/11/21 - 7/17/21", day: 1, calories: 500),

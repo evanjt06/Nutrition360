@@ -25,20 +25,3 @@ extension Food {
         return request
     }
 }
-
-public class Progress: NSManagedObject, Identifiable {
-    @NSManaged public var day: NSNumber
-    @NSManaged public var calories: NSNumber
-    @NSManaged public var date: Date
-}
-
-extension Progress {
-    static func getAll() -> NSFetchRequest<Progress> {
-        let request: NSFetchRequest<Progress> = Progress.fetchRequest() as! NSFetchRequest<Progress>
-        
-        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
-        request.sortDescriptors = [sortDescriptor]
-        
-        return request
-    }
-}

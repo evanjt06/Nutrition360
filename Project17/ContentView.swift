@@ -11,6 +11,91 @@ import SwiftUICharts
 import ExytePopupView
 import BottomBar_SwiftUI
     
+extension Date {
+
+  static func today() -> Date {
+      return Date()
+  }
+
+  func next(_ weekday: Weekday, considerToday: Bool = false) -> Date {
+    return get(.next,
+               weekday,
+               considerToday: considerToday)
+  }
+
+  func previous(_ weekday: Weekday, considerToday: Bool = false) -> Date {
+    return get(.previous,
+               weekday,
+               considerToday: considerToday)
+  }
+
+  func get(_ direction: SearchDirection,
+           _ weekDay: Weekday,
+           considerToday consider: Bool = false) -> Date {
+
+    let dayName = weekDay.rawValue
+
+    let weekdaysName = getWeekDaysInEnglish().map { $0.lowercased() }
+
+    assert(weekdaysName.contains(dayName), "weekday symbol should be in form \(weekdaysName)")
+
+    let searchWeekdayIndex = weekdaysName.firstIndex(of: dayName)! + 1
+
+    let calendar = Calendar(identifier: .gregorian)
+
+    if consider && calendar.component(.weekday, from: self) == searchWeekdayIndex {
+      return self
+    }
+
+    var nextDateComponent = calendar.dateComponents([.hour, .minute, .second], from: self)
+    nextDateComponent.weekday = searchWeekdayIndex
+
+    let date = calendar.nextDate(after: self,
+                                 matching: nextDateComponent,
+                                 matchingPolicy: .nextTime,
+                                 direction: direction.calendarSearchDirection)
+
+    return date!
+  }
+
+}
+
+// MARK: Helper methods
+extension Date {
+  func getWeekDaysInEnglish() -> [String] {
+    var calendar = Calendar(identifier: .gregorian)
+    calendar.locale = Locale(identifier: "en_US_POSIX")
+    return calendar.weekdaySymbols
+  }
+
+  enum Weekday: String {
+    case monday, tuesday, wednesday, thursday, friday, saturday, sunday
+  }
+
+  enum SearchDirection {
+    case next
+    case previous
+
+    var calendarSearchDirection: Calendar.SearchDirection {
+      switch self {
+      case .next:
+        return .forward
+      case .previous:
+        return .backward
+      }
+    }
+  }
+}
+
+extension Date {
+    func dayOfWeek() -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        return dateFormatter.string(from: self).capitalized
+        // or use capitalized(with: locale) if you want
+    }
+}
+
 let items: [BottomBarItem] = [
     BottomBarItem(icon: "rectangle.split.3x3", title: "Meals", color: .purple),
     BottomBarItem(icon: "chart.bar.xaxis", title: "Progress", color: .pink),
@@ -47,33 +132,57 @@ struct BasicView_1: View {
 
 struct BasicView_2: View {
     
-    @State var week = "7/11/21 - 7/17/21"
+    @State var dateToday = Date.today()
+    
+    var computedWeekRange: (String, String) {
+        
+        let df = DateFormatter()
+        df.dateFormat = "MM/dd/yyyy"
+
+        var startOfWeek: String
+        var endOfWeek: String
+
+        if self.dateToday.dayOfWeek()! == "Sunday" {
+            startOfWeek = df.string(from: dateToday)
+        } else {
+            let xx = self.dateToday.previous(.sunday)
+            startOfWeek = (df.string(from: xx))
+        }
+        if self.dateToday.dayOfWeek()! == "Saturday" {
+            endOfWeek = df.string(from: dateToday)
+        } else {
+            let xx2 = self.dateToday.next(.saturday)
+            endOfWeek = (df.string(from: xx2))
+        }
+        return (startOfWeek, endOfWeek)
+        
+    }
     
     var body: some View {
       
         return VStack {
-            ProgressView(week: week)
+            ProgressView(week: self.computedWeekRange)
                 .navigationBarTitle("Progress")
                 .navigationBarItems(leading:
-                                        Button(action: {print("previous")}) {
+                                        Button(action: {
+                                              
+                                            self.dateToday = Calendar.current.date(byAdding: .day, value: -7, to: dateToday)!
+                                         
+                                        }) {
                                             Image(systemName: "chevron.left")
                                             Text("Previous Week")
                                         }.accentColor(.red)
                                         .foregroundColor(.red)
-                                    , trailing: Button(action: {print("next")}) {
+                                    , trailing: Button(action: {
+                                        self.dateToday = Calendar.current.date(byAdding: .day, value: 7, to: dateToday)!
+                                       
+                                    }) {
                         Text("Next Week")
                         Image(systemName: "chevron.right")
                     }.accentColor(.red).foregroundColor(.red))
         }
     }
-    
-    func calculateThisWeeksDates() -> String {
-        let x = Date()
-        
-        
-        
-        return ""
-    }
+
 }
 
 

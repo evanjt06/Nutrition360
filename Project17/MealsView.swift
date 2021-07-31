@@ -31,7 +31,7 @@ struct MealsView: View {
     var computedTotalCalories: Double {
         
 //        delete records:
-//        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Food")
+//        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Progress")
 //        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
 //
 //        let container = PersistenceController.shared.container
@@ -48,6 +48,38 @@ struct MealsView: View {
                 count += Int(x.foodCalories)
             }
         }
+
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "yyyy/MM/dd"
+        let reformattedDateNum = NSNumber(value: Int(dateFormatterPrint.string(from: date).replacingOccurrences(of: "/", with: ""))!)
+
+        let progress: Progress
+        let fetchProgress: NSFetchRequest<Progress> = Progress.getAll()
+        fetchProgress.predicate = NSPredicate(format: "progressDate = %@", reformattedDateNum)
+
+        let results = try? viewContext.fetch(fetchProgress)
+        if results?.count == 0 {
+            // insertion
+            print("insert")
+            progress = Progress(context: viewContext)
+        } else {
+            // update
+            print("update")
+            progress = results?.first ?? Progress(context: viewContext)
+        }
+
+        progress.calories = NSNumber(value: Double(count))
+        progress.day = NSString(string: date.dayOfWeek()!)
+        progress.progressDate = reformattedDateNum
+
+        do {
+           try self.viewContext.save()
+
+           print("PROGRESS SAVED")
+       } catch {
+           print("MealsView 96 - \(error.localizedDescription)")
+       }
+
         
         return Double(count)
     }
