@@ -6,17 +6,17 @@
 //
 
 import SwiftUI
-import SwiftUICharts
 
 struct ProgressView: View {
+    
+    var week: String
 
     var body: some View {
-        Text("ok")
-    }
-}
-
-struct ProgressView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProgressView()
+        VStack {
+            Text("Week of \(week)")
+                .font(.subheadline)
+                .foregroundColor(.gray)
+            XLineChartView(entries: Transaction.dataEntriesForWeek(self.week, Transaction.allTransactions))
+        }.padding()
     }
 }

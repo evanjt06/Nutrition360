@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		390CCCED26B4C0A90077E021 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39B05B6A26B4BFAE00471079 /* Charts.framework */; };
+		390CCCEE26B4C0A90077E021 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 39B05B6A26B4BFAE00471079 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		390CCCF326B4C1330077E021 /* XLineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390CCCF226B4C1330077E021 /* XLineChartView.swift */; };
+		390CCCF526B4C17E0077E021 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390CCCF426B4C17E0077E021 /* Transaction.swift */; };
 		3991C73D269BFA4A00175C86 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3991C73C269BFA4A00175C86 /* ImagePicker.swift */; };
 		3991C73F269BFA6800175C86 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3991C73E269BFA6800175C86 /* UIImage+Extensions.swift */; };
 		3991C741269BFA7D00175C86 /* Food101.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3991C740269BFA7D00175C86 /* Food101.mlmodel */; };
@@ -40,8 +44,41 @@
 		8FADAB8B7F36EF3E986E4654 /* Pods_Project17.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C73A88948F53DE7DF9C3A50A /* Pods_Project17.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		39B05B6926B4BFAE00471079 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 39B05B6426B4BFAE00471079 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
+			remoteInfo = Charts;
+		};
+		39B05B6B26B4BFAE00471079 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 39B05B6426B4BFAE00471079 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
+			remoteInfo = ChartsTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		390CCCEF26B4C0A90077E021 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				390CCCEE26B4C0A90077E021 /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		329D8173F491128A2D2D31FF /* Pods-Project17.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project17.debug.xcconfig"; path = "Target Support Files/Pods-Project17/Pods-Project17.debug.xcconfig"; sourceTree = "<group>"; };
+		390CCCF226B4C1330077E021 /* XLineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLineChartView.swift; sourceTree = "<group>"; };
+		390CCCF426B4C17E0077E021 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		3991C73C269BFA4A00175C86 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		3991C73E269BFA6800175C86 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		3991C740269BFA7D00175C86 /* Food101.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Food101.mlmodel; sourceTree = "<group>"; };
@@ -60,6 +97,7 @@
 		39B05B3026B3A04C00471079 /* AxisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxisView.swift; sourceTree = "<group>"; };
 		39B05B3226B3A06000471079 /* BarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarsView.swift; sourceTree = "<group>"; };
 		39B05B3426B3A08500471079 /* LabelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsView.swift; sourceTree = "<group>"; };
+		39B05B6426B4BFAE00471079 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../../../Desktop/Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
 		39B63C3126965B36001BE6D7 /* NutritionGram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NutritionGram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39B63C3426965B36001BE6D7 /* Project17App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project17App.swift; sourceTree = "<group>"; };
 		39B63C3626965B36001BE6D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -82,6 +120,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39DB52C326AF54D50085AEBC /* SwiftSpeech in Frameworks */,
+				390CCCED26B4C0A90077E021 /* Charts.framework in Frameworks */,
 				39A090FA26A0191300286685 /* BottomBar-SwiftUI in Frameworks */,
 				8FADAB8B7F36EF3E986E4654 /* Pods_Project17.framework in Frameworks */,
 			);
@@ -90,6 +129,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		390CCCF126B4C11E0077E021 /* UICharts */ = {
+			isa = PBXGroup;
+			children = (
+				390CCCF226B4C1330077E021 /* XLineChartView.swift */,
+				390CCCF426B4C17E0077E021 /* Transaction.swift */,
+			);
+			path = UICharts;
+			sourceTree = "<group>";
+		};
 		39A090F1269EA8DE00286685 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +162,15 @@
 			path = Charts;
 			sourceTree = "<group>";
 		};
+		39B05B6526B4BFAE00471079 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				39B05B6A26B4BFAE00471079 /* Charts.framework */,
+				39B05B6C26B4BFAE00471079 /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		39B63C2826965B36001BE6D7 = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +192,7 @@
 		39B63C3326965B36001BE6D7 /* Project17 */ = {
 			isa = PBXGroup;
 			children = (
+				390CCCF126B4C11E0077E021 /* UICharts */,
 				39B05B2526B39D2400471079 /* Charts */,
 				39A090F1269EA8DE00286685 /* Onboarding */,
 				3991C740269BFA7D00175C86 /* Food101.mlmodel */,
@@ -156,6 +214,7 @@
 				39EB2CFA26AD4E630088F349 /* Persistence.swift */,
 				39DB52C426AF78D20085AEBC /* SpeechView.swift */,
 				39DB52C626B34FBB0085AEBC /* FoodNutritionView.swift */,
+				39B05B6426B4BFAE00471079 /* Charts.xcodeproj */,
 			);
 			path = Project17;
 			sourceTree = "<group>";
@@ -197,6 +256,7 @@
 				39B63C2E26965B36001BE6D7 /* Frameworks */,
 				39B63C2F26965B36001BE6D7 /* Resources */,
 				5094A4F13BE72D140F25C4AE /* [CP] Embed Pods Frameworks */,
+				390CCCEF26B4C0A90077E021 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -240,12 +300,35 @@
 			);
 			productRefGroup = 39B63C3226965B36001BE6D7 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 39B05B6526B4BFAE00471079 /* Products */;
+					ProjectRef = 39B05B6426B4BFAE00471079 /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				39B63C3026965B36001BE6D7 /* NutritionGram */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		39B05B6A26B4BFAE00471079 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 39B05B6926B4BFAE00471079 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		39B05B6C26B4BFAE00471079 /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = 39B05B6B26B4BFAE00471079 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		39B63C2F26965B36001BE6D7 /* Resources */ = {
@@ -320,6 +403,8 @@
 				3991C743269BFAA700175C86 /* FoodPicker.swift in Sources */,
 				39DB52C526AF78D20085AEBC /* SpeechView.swift in Sources */,
 				3993026126A3921F00727B9A /* GenericFood.swift in Sources */,
+				390CCCF526B4C17E0077E021 /* Transaction.swift in Sources */,
+				390CCCF326B4C1330077E021 /* XLineChartView.swift in Sources */,
 				39B63C3726965B36001BE6D7 /* ContentView.swift in Sources */,
 				39B63C48269815D2001BE6D7 /* ProgressView.swift in Sources */,
 				39B05B2B26B39D8200471079 /* BarChartView.swift in Sources */,

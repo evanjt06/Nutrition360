@@ -47,13 +47,32 @@ struct BasicView_1: View {
 
 struct BasicView_2: View {
     
+    @State var week = "7/11/21 - 7/17/21"
+    
     var body: some View {
       
         return VStack {
-            ProgressView()
+            ProgressView(week: week)
                 .navigationBarTitle("Progress")
-                .navigationBarItems(trailing: EmptyView())
+                .navigationBarItems(leading:
+                                        Button(action: {print("previous")}) {
+                                            Image(systemName: "chevron.left")
+                                            Text("Previous Week")
+                                        }.accentColor(.red)
+                                        .foregroundColor(.red)
+                                    , trailing: Button(action: {print("next")}) {
+                        Text("Next Week")
+                        Image(systemName: "chevron.right")
+                    }.accentColor(.red).foregroundColor(.red))
         }
+    }
+    
+    func calculateThisWeeksDates() -> String {
+        let x = Date()
+        
+        
+        
+        return ""
     }
 }
 
