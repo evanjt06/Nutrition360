@@ -11,7 +11,7 @@ import SwiftSpeech
 struct SpeechView: View {
     
     
-    @State private var text = "Tap to Speak"
+    @State private var text = ""
     @State private var autocompletedFoods: [String] = []
     
     @Binding var mealType: String
@@ -24,6 +24,12 @@ struct SpeechView: View {
         let sessionConfiguration: SwiftSpeech.Session.Configuration = SwiftSpeech.Session.Configuration(locale: .current)
         
         return VStack(spacing: 35.0) {
+            
+            Text("Tap to speak and tap again when finished speaking.")
+                .multilineTextAlignment(.center)
+            
+            Spacer()
+            
             Text(text)
                 .font(.system(size: 25, weight: .bold, design: .rounded))
             SwiftSpeech.RecordButton()
@@ -48,7 +54,7 @@ struct SpeechView: View {
             if autocompletedFoods.count == 0 {
                 Text("No results found...")
             }
-            
+                        
             if autocompletedFoods.count != 0 {
                 NavigationView {
                     List(autocompletedFoods, id: \.self) { food in
@@ -63,6 +69,8 @@ struct SpeechView: View {
                                 .navigationBarBackButtonHidden(true)
                 }
             }
+            
+            Spacer()
             
         }
         .padding(.top)

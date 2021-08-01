@@ -19,7 +19,7 @@ struct XLineChartView: UIViewRepresentable {
     func updateUIView(_ uiView: LineChartView, context: Context) {
         let dataset = LineChartDataSet(entries: entries)
         
-        dataset.label = "Calorie count"
+        dataset.label = "Amount of calories"
         uiView.noDataText = "No data"
         uiView.data = LineChartData(dataSet: dataset)
         uiView.rightAxis.enabled = false
@@ -27,7 +27,7 @@ struct XLineChartView: UIViewRepresentable {
         uiView.setScaleEnabled(false)
         
         dataset.colors = [.orange]
-        dataset.valueFont = UIFont(name: "Times", size: 14.0)!
+        dataset.valueFont = UIFont(name: "Times", size: 11.0)!
         dataset.circleColors = [.black]
         
         let f = NumberFormatter()

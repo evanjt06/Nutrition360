@@ -70,9 +70,22 @@ class Api {
     }
     
     func getAutocompleteList(food: String, completion: @escaping ([String]) -> ()) {
-        guard let url = URL(string: "https://api.edamam.com/auto-complete?app_id=ec8aadf0&app_key=b3932e88102eef7585f73bc9c03e400c%09&q=\(food)") else {return}
         
-        URLSession.shared.dataTask(with: url) { data, _, _ in
+        var components = URLComponents()
+           components.scheme = "https"
+           components.host = "api.edamam.com"
+           components.path = "/auto-complete"
+           components.queryItems = [
+               URLQueryItem(name: "app_id", value: "ec8aadf0"),
+               URLQueryItem(name: "app_key", value: "b3932e88102eef7585f73bc9c03e400c"),
+                URLQueryItem(name: "q", value: food),
+           ]
+
+           // Getting a URL from our components is as simple as
+           // accessing the 'url' property.
+           let url = components.url
+        
+        URLSession.shared.dataTask(with: url!) { data, _, _ in
         
             let ans = try! JSONDecoder().decode([String].self, from:  data!)
             

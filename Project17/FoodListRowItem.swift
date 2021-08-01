@@ -100,7 +100,15 @@ struct FoodListRowItem: View {
 
                             print("SAVED")
                         } catch {
-                            print("FoodListRowItem (103) - \(error.localizedDescription)")
+                            print("FoodListRowItem (103A) - \(error.localizedDescription)")
+                            
+                            do {
+                                try self.viewContext.save()
+                                
+                                print("i guess it worked?")
+                            } catch {
+                                print("FoodListRowItem (103B) - \(error.localizedDescription)")
+                            }
                         }
                         
                         self.totalCalories += calories
