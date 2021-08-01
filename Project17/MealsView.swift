@@ -28,7 +28,7 @@ struct MealsView: View {
     
     @Binding var date: Date
     
-    var computedTotalCalories: Double {
+    var computedTotalCalories: String {
         
 //        delete records:
 //        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Progress")
@@ -41,11 +41,11 @@ struct MealsView: View {
 //            // TODO: handle the error
 //        }
         
-        var count = 0
+        var count = 0.0
 
         for x in data {
             if dateCheckValid(data: x.date) {
-                count += Int(x.foodCalories)
+                count += Double(x.foodCalories)
             }
         }
 
@@ -79,9 +79,8 @@ struct MealsView: View {
        } catch {
            print("MealsView 96 - \(error.localizedDescription)")
        }
-
         
-        return Double(count)
+        return Int(exactly: count) == nil ?  "\(count)" : "\(Int(count))"
     }
 
     var body: some View {
@@ -89,17 +88,25 @@ struct MealsView: View {
         var currentMealType = ""
         
             return List {
+               
                 Section {
+                    
+                    HStack {
                     Text("Breakfast")
-                        .font(.system(size: 30, weight: .heavy, design: .default))
+                        .font(.system(size: 26, weight: .bold, design: .rounded))
+                    Spacer()
+                    Image(systemName: "sunrise")
+                        .scaleEffect(1.5)
+                    }
+                    
                     ZStack {
                         Rectangle()
                             .fill(Color.purple)
                             .cornerRadius(8)
-                            .frame(height: 52)
+                            .frame(height: 40)
                             .padding(.horizontal)
 
-                        Text("Add breakfast")
+                        Text("Add breakfast items")
                             .font(.headline)
                             .foregroundColor(.white)
                     }
@@ -122,7 +129,7 @@ struct MealsView: View {
                                     Text("\(x.foodName)".firstCapitalized)
                                         .font(Font.system(size: 18, design: .rounded))
                                     Spacer()
-                                    Text("\(x.foodCalories.intValue) cal")
+                                    Text(Int(exactly: x.foodCalories) == nil ?  "\(x.foodCalories) cal" : "\(Int(x.foodCalories)) cal")
                                         .font(Font.system(size: 18, weight: .bold, design: .rounded))
                                     
                                 }
@@ -139,21 +146,26 @@ struct MealsView: View {
                             print(error.localizedDescription)
                         }
                     })
-                    
-                    
+                     
                 }
+                
                 Section {
-                    Text("Lunch")
-                        .font(.system(size: 30, weight: .heavy, design: .default))
-                  
+                    
+                    HStack {
+                        Text("Lunch")
+                            .font(.system(size: 26, weight: .bold, design: .rounded))
+                        Spacer()
+                        Image(systemName: "sun.min")
+                            .scaleEffect(1.5)
+                    }
                     ZStack {
                         Rectangle()
                             .fill(Color.purple)
                             .cornerRadius(8)
-                            .frame(height: 52)
+                            .frame(height: 40)
                             .padding(.horizontal)
 
-                        Text("Add lunch")
+                        Text("Add lunch items")
                             .font(.headline)
                             .foregroundColor(.white)
                     }
@@ -174,7 +186,7 @@ struct MealsView: View {
                                     Text("\(x.foodName)".firstCapitalized)
                                         .font(Font.system(size: 18, design: .rounded))
                                     Spacer()
-                                    Text("\(x.foodCalories.intValue) cal")
+                                    Text(Int(exactly: x.foodCalories) == nil ?  "\(x.foodCalories) cal" : "\(Int(x.foodCalories)) cal")
                                         .font(Font.system(size: 18, weight: .bold, design: .rounded))
                                     
                                 }
@@ -193,18 +205,22 @@ struct MealsView: View {
                     })
                 }
                 Section {
-                    Text("Dinner")
-                        .font(.system(size: 30, weight: .heavy, design: .default))
-                
+                    HStack {
+                        Text("Dinner")
+                            .font(.system(size: 26, weight: .bold, design: .rounded))
+                        Spacer()
+                        Image(systemName: "sunset")
+                            .scaleEffect(1.5)
+                    }
                     ZStack {
                         
                             Rectangle()
                                 .fill(Color.purple)
                                 .cornerRadius(8)
-                                .frame(height: 52)
+                                .frame(height: 40)
                                 .padding(.horizontal)
 
-                                Text("Add dinner")
+                                Text("Add dinner items")
                                     .font(.headline)
                                     .foregroundColor(.white)
                     }
@@ -225,7 +241,7 @@ struct MealsView: View {
                                     Text("\(x.foodName)".firstCapitalized)
                                         .font(Font.system(size: 18, design: .rounded))
                                     Spacer()
-                                    Text("\(x.foodCalories.intValue) cal")
+                                    Text(Int(exactly: x.foodCalories) == nil ?  "\(x.foodCalories) cal" : "\(Int(x.foodCalories)) cal")
                                         .font(Font.system(size: 18, weight: .bold, design: .rounded))
                                     
                                 }
@@ -244,13 +260,18 @@ struct MealsView: View {
                     })
                 }
                 Section {
-                    Text("Snacks")
-                        .font(.system(size: 30, weight: .heavy, design: .default))
+                    HStack {
+                        Text("Snacks")
+                            .font(.system(size: 26, weight: .bold, design: .rounded))
+                        Spacer()
+                        Image(systemName: "drop")
+                            .scaleEffect(1.5)
+                    }
                     ZStack {
                         Rectangle()
                             .fill(Color.purple)
                             .cornerRadius(8)
-                            .frame(height: 52)
+                            .frame(height: 40)
                             .padding(.horizontal)
 
                         Text("Add snacks")
@@ -276,7 +297,7 @@ struct MealsView: View {
                                     Text("\(x.foodName)".firstCapitalized)
                                         .font(Font.system(size: 18, design: .rounded))
                                     Spacer()
-                                    Text("\(x.foodCalories.intValue) cal")
+                                    Text(Int(exactly: x.foodCalories) == nil ?  "\(x.foodCalories) cal" : "\(Int(x.foodCalories)) cal")
                                         .font(Font.system(size: 18, weight: .bold, design: .rounded))
                                     
                                 }
@@ -298,13 +319,13 @@ struct MealsView: View {
                 Section {
                     HStack {
                         Spacer()
-                        Text("Total Calories: \(String(format: "%.2f", self.computedTotalCalories)) cal")
+                        Text("Total Calories: \(self.computedTotalCalories) cal")
                         Spacer()
                     }
                 }
             
             }
-            .listStyle(PlainListStyle())
+            .listStyle(InsetGroupedListStyle())
         .sheet(isPresented: $showFoodPicker) {
             FoodPicker(mealType: currentMealType, showFoodPicker: $showFoodPicker, totalCalories: $calories, date: date)
         }
