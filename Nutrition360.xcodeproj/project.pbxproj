@@ -100,7 +100,7 @@
 		39B05B3226B3A06000471079 /* BarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarsView.swift; sourceTree = "<group>"; };
 		39B05B3426B3A08500471079 /* LabelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsView.swift; sourceTree = "<group>"; };
 		39B05B6426B4BFAE00471079 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../../../Desktop/Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
-		39B63C3126965B36001BE6D7 /* NutritionGram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NutritionGram.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		39B63C3126965B36001BE6D7 /* Nutrition360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nutrition360.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39B63C3426965B36001BE6D7 /* Project17App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project17App.swift; sourceTree = "<group>"; };
 		39B63C3626965B36001BE6D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		39B63C3826965B39001BE6D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 		39B63C3226965B36001BE6D7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				39B63C3126965B36001BE6D7 /* NutritionGram.app */,
+				39B63C3126965B36001BE6D7 /* Nutrition360.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -250,9 +250,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		39B63C3026965B36001BE6D7 /* NutritionGram */ = {
+		39B63C3026965B36001BE6D7 /* Nutrition360 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 39B63C4026965B39001BE6D7 /* Build configuration list for PBXNativeTarget "NutritionGram" */;
+			buildConfigurationList = 39B63C4026965B39001BE6D7 /* Build configuration list for PBXNativeTarget "Nutrition360" */;
 			buildPhases = (
 				87C68F3C4E6C01F1C502B163 /* [CP] Check Pods Manifest.lock */,
 				39B63C2D26965B36001BE6D7 /* Sources */,
@@ -265,13 +265,13 @@
 			);
 			dependencies = (
 			);
-			name = NutritionGram;
+			name = Nutrition360;
 			packageProductDependencies = (
 				39A090F926A0191300286685 /* BottomBar-SwiftUI */,
 				39DB52C226AF54D50085AEBC /* SwiftSpeech */,
 			);
 			productName = Project17;
-			productReference = 39B63C3126965B36001BE6D7 /* NutritionGram.app */;
+			productReference = 39B63C3126965B36001BE6D7 /* Nutrition360.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -288,7 +288,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 39B63C2C26965B36001BE6D7 /* Build configuration list for PBXProject "NutritionGram" */;
+			buildConfigurationList = 39B63C2C26965B36001BE6D7 /* Build configuration list for PBXProject "Nutrition360" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -311,7 +311,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				39B63C3026965B36001BE6D7 /* NutritionGram */,
+				39B63C3026965B36001BE6D7 /* Nutrition360 */,
 			);
 		};
 /* End PBXProject section */
@@ -592,7 +592,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		39B63C2C26965B36001BE6D7 /* Build configuration list for PBXProject "NutritionGram" */ = {
+		39B63C2C26965B36001BE6D7 /* Build configuration list for PBXProject "Nutrition360" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				39B63C3E26965B39001BE6D7 /* Debug */,
@@ -601,7 +601,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		39B63C4026965B39001BE6D7 /* Build configuration list for PBXNativeTarget "NutritionGram" */ = {
+		39B63C4026965B39001BE6D7 /* Build configuration list for PBXNativeTarget "Nutrition360" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				39B63C4126965B39001BE6D7 /* Debug */,

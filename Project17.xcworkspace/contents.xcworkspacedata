@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/evantu/Documents/swift-learning/Project17/NutritionGram.xcodeproj">
+      location = "group:/Users/evantu/Documents/swift-learning/Project17/Nutrition360.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
