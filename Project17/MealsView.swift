@@ -327,6 +327,8 @@ struct MealsView: View {
                     if UserDefaults.standard.string(forKey: "gender") == "Male" {
                             if Double(self.computedTotalCalories)! < 2500.0 {
                                 Text("Recommended daily calorie intake: ").font(Font.system(size: 16, weight: .regular, design: .rounded)) + Text("Not Met").foregroundColor(.red).font(Font.system(size: 16, weight: .regular, design: .rounded))
+                            } else if Double(self.computedTotalCalories)! > 4000.0 {
+                                Text("Recommended daily calorie intake: ").font(Font.system(size: 16, weight: .regular, design: .rounded)) + Text("Exceeded limit").foregroundColor(.red).font(Font.system(size: 16, weight: .regular, design: .rounded))
                             } else {
                                 Text("Recommended daily calorie intake: ") + Text("Met").foregroundColor(.green)
                             }
@@ -335,6 +337,8 @@ struct MealsView: View {
                     if UserDefaults.standard.string(forKey: "gender") == "Female" {
                         if  Double(self.computedTotalCalories)! < 2000.0  {
                             Text("Recommended daily calorie intake: ").font(Font.system(size: 16, weight: .regular, design: .rounded)) + Text("Not Met").foregroundColor(.red).font(Font.system(size: 16, weight: .regular, design: .rounded))
+                        } else if Double(self.computedTotalCalories)! > 3500.0 {
+                            Text("Recommended daily calorie intake: ").font(Font.system(size: 16, weight: .regular, design: .rounded)) + Text("Exceeded limit").foregroundColor(.red).font(Font.system(size: 16, weight: .regular, design: .rounded))
                         } else {
                             Text("Recommended daily calorie intake: ") + Text("Met").foregroundColor(.green)
                         }
