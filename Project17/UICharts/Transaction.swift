@@ -7,6 +7,7 @@
 
 import Foundation
 import Charts
+import CoreData
 
 struct Transaction {
     
@@ -22,25 +23,75 @@ struct Transaction {
     
     static var days: [String] = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"]
     
-    static var allTransactions: [Transaction] {
-        
-//        todo input custom logic to fetch and create the final Transaction array[]
-        [
-            Transaction(week: "7/11/21 - 7/17/21", day: 0, calories: 300),
-            Transaction(week: "7/11/21 - 7/17/21", day: 1, calories: 500),
-            Transaction(week: "7/11/21 - 7/17/21", day: 2, calories: 600),
-            Transaction(week: "7/11/21 - 7/17/21", day: 3, calories: 700),
-            Transaction(week: "7/11/21 - 7/17/21", day: 4, calories: 800),
-            Transaction(week: "7/11/21 - 7/17/21", day: 5, calories: 900),
-            Transaction(week: "7/11/21 - 7/17/21", day: 6, calories: 200),
-            Transaction(week: "7/18/21 - 7/24/21", day: 0, calories: 300),
-            Transaction(week: "7/18/21 - 7/24/21", day: 1, calories: 800),
-            Transaction(week: "7/18/21 - 7/24/21", day: 2, calories: 800),
-            Transaction(week: "7/18/21 - 7/24/21", day: 3, calories: 700),
-            Transaction(week: "7/18/21 - 7/24/21", day: 4, calories: 800),
-            Transaction(week: "7/18/21 - 7/24/21", day: 5, calories: 100),
-            Transaction(week: "7/18/21 - 7/24/21", day: 6, calories: 100),
-        ]
+    static func allTransactions(starting: Int64, ending: Int64, workingDate: Date) -> [Transaction] {
+
+        let fetchProgress: NSFetchRequest<Progress> = Progress.getAll()
+        fetchProgress.predicate = NSPredicate(format: "progressDate >= \(starting) and progressDate <= \(ending)")
+
+        let results = try? PersistenceController.shared.container.viewContext.fetch(fetchProgress)
+
+            let progressArray = results!
+
+            let dateToday = workingDate
+
+            let df = DateFormatter()
+            df.dateFormat = "MM/dd/yyyy"
+
+            let dateInit: Date
+
+            if dateToday.dayOfWeek()! == "Sunday" {
+                dateInit = dateToday
+            } else {
+                dateInit = dateToday.previous(.sunday)
+            }
+
+            let dateFormatterPrint = DateFormatter()
+            dateFormatterPrint.dateFormat = "yyyy/MM/dd"
+
+            let startingDate = dateFormatterPrint.string(from: dateInit).replacingOccurrences(of: "/", with: "")
+
+
+            var finalTransactionArr: Array<Transaction> = Array(repeating: Transaction(week: startingDate, day: 0, calories: 0), count: 7)
+
+            for i in 0...6 {
+
+                var cal: Double = 0
+
+                for x in progressArray {
+                    if i == 0 && x.day == "Sunday" {
+                        cal = Double(x.calories)
+                    }
+                    if i == 1 && x.day == "Monday" {
+                        cal = Double(x.calories)
+                    }
+                    if i == 2 && x.day == "Tuesday" {
+                        cal = Double(x.calories)
+                    }
+                    if i == 3 && x.day == "Wednesday" {
+                        cal = Double(x.calories)
+                    }
+                    if i == 4 && x.day == "Thursday" {
+                        cal = Double(x.calories)
+                    }
+                    if i == 5 && x.day == "Friday" {
+                        cal = Double(x.calories)
+                    }
+                    if i == 6 && x.day == "Saturday" {
+                        cal = Double(x.calories)
+                    }
+                }
+
+                finalTransactionArr[i] = Transaction(week: startingDate, day: Double(i), calories: cal)
+            }
+
+
+//            for x in finalTransactionArr {
+//                print(x)
+//            }
+
+
+            return finalTransactionArr
+
     }
 }
 

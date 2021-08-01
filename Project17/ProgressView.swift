@@ -9,14 +9,19 @@ import SwiftUI
 
 struct ProgressView: View {
     
-    var week: (String, String)
+    var weekA: String
+    var weekB: String
+    var startingVal: Int64
+    var endingVal: Int64
+    
+    var workingDate: Date
 
     var body: some View {
         VStack {
-            Text("Week of \(week.0) - \(week.1)")
+            Text("Week of \(weekA) - \(weekB)")
                 .font(.subheadline)
                 .foregroundColor(.gray)
-//            XLineChartView(entries: Transaction.dataEntriesForWeek(TODO, Transaction.allTransactions))
+            XLineChartView(entries: Transaction.dataEntriesForWeek("\(startingVal)", Transaction.allTransactions(starting: startingVal, ending: endingVal, workingDate: workingDate)))
         }.padding()
     }
 }

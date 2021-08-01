@@ -134,7 +134,7 @@ struct BasicView_2: View {
     
     @State var dateToday = Date.today()
     
-    var computedWeekRange: (String, String) {
+    var computedWeekRange: (String, String, Int64, Int64) {
         
         let df = DateFormatter()
         df.dateFormat = "MM/dd/yyyy"
@@ -142,26 +142,44 @@ struct BasicView_2: View {
         var startOfWeek: String
         var endOfWeek: String
 
+        let temporaryDate: Date
+        let tempDate2 :Date
+        
         if self.dateToday.dayOfWeek()! == "Sunday" {
             startOfWeek = df.string(from: dateToday)
+            
+            temporaryDate = self.dateToday
         } else {
             let xx = self.dateToday.previous(.sunday)
             startOfWeek = (df.string(from: xx))
+            
+            temporaryDate = xx
         }
         if self.dateToday.dayOfWeek()! == "Saturday" {
             endOfWeek = df.string(from: dateToday)
+            
+            tempDate2 = self.dateToday
         } else {
             let xx2 = self.dateToday.next(.saturday)
             endOfWeek = (df.string(from: xx2))
+            
+            tempDate2 = xx2
         }
-        return (startOfWeek, endOfWeek)
+        
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "yyyy/MM/dd"
+        
+        let startingDate = Int64(dateFormatterPrint.string(from: temporaryDate).replacingOccurrences(of: "/", with: ""))!
+        let endingDate = Int64(dateFormatterPrint.string(from: tempDate2).replacingOccurrences(of: "/", with: ""))!
+        
+        return (startOfWeek, endOfWeek, startingDate, endingDate)
         
     }
     
     var body: some View {
-      
+        
         return VStack {
-            ProgressView(week: self.computedWeekRange)
+            ProgressView(weekA: self.computedWeekRange.0, weekB: self.computedWeekRange.1, startingVal: self.computedWeekRange.2, endingVal: self.computedWeekRange.3, workingDate: dateToday)
                 .navigationBarTitle("Progress")
                 .navigationBarItems(leading:
                                         Button(action: {

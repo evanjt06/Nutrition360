@@ -7,17 +7,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F1AEC2DF-8AC2-4276-BC63-21E8BFDB3371"
+            uuid = "CF12D0E9-DA1C-4886-A1D9-47B871F9C956"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Project17/MealsView.swift"
+            filePath = "Project17/UICharts/Transaction.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "computedTotalCalories"
-            landmarkType = "24">
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "allTransactions(starting:ending:workingDate:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
