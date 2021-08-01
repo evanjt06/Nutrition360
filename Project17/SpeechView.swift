@@ -19,24 +19,58 @@ struct SpeechView: View {
     @Binding var totalCalories: Double
     var date: Date
     
+    @State private var choice: Bool = true
+    @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         
         let sessionConfiguration: SwiftSpeech.Session.Configuration = SwiftSpeech.Session.Configuration(locale: .current)
         
-        return VStack(spacing: 35.0) {
+        return VStack(spacing: 10.0) {
             
-            Text("Tap to speak and tap again when finished speaking.")
-                .multilineTextAlignment(.center)
+            HStack {
+                Button(action: {
+                    
+                }) {
+                
+                    Image(systemName: "x.circle")
+                        .scaleEffect(1.5)
+                        .padding()
+                
+                    
+                }.hidden()
+                Spacer()
+                
+              Text(choice ? "Tap button to speak" : "Tap button again to search")
+                  .font(.system(size: 18, weight: .bold, design: .rounded))
+                  .multilineTextAlignment(.center)
+                
+                Spacer()
+                Button(action: {
+                    
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                  
+                    Image(systemName: "x.circle.fill")
+                        .scaleEffect(1.5)
+                        .padding()
+                        .accentColor(colorScheme == .dark ? .white : .black)
+                }
+            }
             
             Spacer()
             
             Text(text)
                 .font(.system(size: 25, weight: .bold, design: .rounded))
+                .padding(.bottom, 20)
+            
             SwiftSpeech.RecordButton()
                 .swiftSpeechToggleRecordingOnTap(sessionConfiguration: sessionConfiguration, animation: .spring(response: 0.4, dampingFraction: 0.5, blendDuration: 0))
                 .onRecognizeLatest(update: $text)
                 .onStopRecording { session in
                     print("stopped recording...")
+                    choice = true
                     
                     // use text and use the api now
                     Api().getAutocompleteList(food: text) { foods in
@@ -46,6 +80,9 @@ struct SpeechView: View {
                         print("done \(autocompletedFoods)")
                         
                     }
+                }
+                .onStartRecording { session in
+                    choice = false
                 }
             
             Spacer()

@@ -80,7 +80,7 @@ struct MealsView: View {
            print("MealsView 96 - \(error.localizedDescription)")
        }
         
-        return Int(exactly: count) == nil ?  "\(count)" : "\(Int(count))"
+        return Int(exactly: count) == nil ?  String(format: "%.2f", count) : "\(Int(count))"
     }
 
     var body: some View {
@@ -129,7 +129,8 @@ struct MealsView: View {
                                     Text("\(x.foodName)".firstCapitalized)
                                         .font(Font.system(size: 18, design: .rounded))
                                     Spacer()
-                                    Text(Int(exactly: x.foodCalories) == nil ?  "\(x.foodCalories) cal" : "\(Int(x.foodCalories)) cal")
+                                    
+                                    Text(Int(exactly: x.foodCalories) == nil ?  "\(Double(x.foodCalories), specifier: "%.2f") cal" : "\(Int(x.foodCalories)) cal")
                                         .font(Font.system(size: 18, weight: .bold, design: .rounded))
                                     
                                 }
@@ -186,7 +187,7 @@ struct MealsView: View {
                                     Text("\(x.foodName)".firstCapitalized)
                                         .font(Font.system(size: 18, design: .rounded))
                                     Spacer()
-                                    Text(Int(exactly: x.foodCalories) == nil ?  "\(x.foodCalories) cal" : "\(Int(x.foodCalories)) cal")
+                                    Text(Int(exactly: x.foodCalories) == nil ? "\(Double(x.foodCalories), specifier: "%.2f") cal" : "\(Int(x.foodCalories)) cal")
                                         .font(Font.system(size: 18, weight: .bold, design: .rounded))
                                     
                                 }
@@ -241,7 +242,7 @@ struct MealsView: View {
                                     Text("\(x.foodName)".firstCapitalized)
                                         .font(Font.system(size: 18, design: .rounded))
                                     Spacer()
-                                    Text(Int(exactly: x.foodCalories) == nil ?  "\(x.foodCalories) cal" : "\(Int(x.foodCalories)) cal")
+                                    Text(Int(exactly: x.foodCalories) == nil ?  "\(Double(x.foodCalories), specifier: "%.2f") cal" : "\(Int(x.foodCalories)) cal")
                                         .font(Font.system(size: 18, weight: .bold, design: .rounded))
                                     
                                 }
@@ -297,7 +298,7 @@ struct MealsView: View {
                                     Text("\(x.foodName)".firstCapitalized)
                                         .font(Font.system(size: 18, design: .rounded))
                                     Spacer()
-                                    Text(Int(exactly: x.foodCalories) == nil ?  "\(x.foodCalories) cal" : "\(Int(x.foodCalories)) cal")
+                                    Text(Int(exactly: x.foodCalories) == nil ?  "\(Double(x.foodCalories), specifier: "%.2f") cal" : "\(Int(x.foodCalories)) cal")
                                         .font(Font.system(size: 18, weight: .bold, design: .rounded))
                                     
                                 }
@@ -319,8 +320,24 @@ struct MealsView: View {
                 Section {
                     HStack {
                         Spacer()
-                        Text("Total Calories: \(self.computedTotalCalories) cal")
+                        Text("Total Calories: \(self.computedTotalCalories) calories")
                         Spacer()
+                    }
+                    
+                    if UserDefaults.standard.string(forKey: "gender") == "Male" {
+                            if Double(self.computedTotalCalories)! < 2500.0 {
+                                Text("Recommended daily calorie intake: ").font(Font.system(size: 16, weight: .regular, design: .rounded)) + Text("Not Met").foregroundColor(.red).font(Font.system(size: 16, weight: .regular, design: .rounded))
+                            } else {
+                                Text("Recommended daily calorie intake: ") + Text("Met").foregroundColor(.green)
+                            }
+                    }
+                    
+                    if UserDefaults.standard.string(forKey: "gender") == "Female" {
+                        if  Double(self.computedTotalCalories)! < 2000.0  {
+                            Text("Recommended daily calorie intake: ").font(Font.system(size: 16, weight: .regular, design: .rounded)) + Text("Not Met").foregroundColor(.red).font(Font.system(size: 16, weight: .regular, design: .rounded))
+                        } else {
+                            Text("Recommended daily calorie intake: ") + Text("Met").foregroundColor(.green)
+                        }
                     }
                 }
             

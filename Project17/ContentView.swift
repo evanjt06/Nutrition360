@@ -96,11 +96,6 @@ extension Date {
     }
 }
 
-let items: [BottomBarItem] = [
-    BottomBarItem(icon: "rectangle.split.3x3", title: "Meals", color: .purple),
-    BottomBarItem(icon: "chart.bar.xaxis", title: "Progress", color: .pink),
-]
-
 struct BasicView_1: View {
     
     @State private var date = Date()
@@ -217,10 +212,6 @@ struct ContentView: View {
     }
     
     @State private var selectedIndex: Int = 0
-
-        var selectedItem: BottomBarItem {
-            items[selectedIndex]
-        }
     
     @State private var hasSceneOnboardingScreen: Bool
     @State private var showingIntroPopup: Bool
@@ -283,19 +274,41 @@ struct ContentView: View {
             return AnyView(
                 
                 ZStack {
-                    NavigationView {
-                        VStack {
-                            if (selectedIndex == 0) {
-                                       BasicView_1()
+                    
+//                        VStack {
+//                            if (selectedIndex == 0) {
+//                                       BasicView_1()
+//                            }
+//
+//                            if (selectedIndex == 1) {
+//                                BasicView_2()
+//                            }
+//
+//                                       BottomBar(selectedIndex: $selectedIndex, items: items)
+//                                   }
+                        
+                        TabView {
+                            
+                            NavigationView {
+                                BasicView_1()
+                                    .navigationBarTitle("Page One")
+                            }
+                            .tabItem {
+                                Image(systemName: "rectangle.split.3x3")
+                                Text("Meals")
                             }
                             
-                            if (selectedIndex == 1) {
+                            NavigationView {
                                 BasicView_2()
+                                    .navigationBarTitle("Page Two")
                             }
-                                           
-                                       BottomBar(selectedIndex: $selectedIndex, items: items)
-                                   }
-                    }
+                                    .tabItem {
+                                        Image(systemName: "chart.bar.xaxis")
+                                        Text("Progress")
+                                }
+                            
+                        }.accentColor(.red)
+                    
 
                 }
                 .popup(isPresented: $showingIntroPopup, type: .`default`, closeOnTap: false) {
