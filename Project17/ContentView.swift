@@ -7,7 +7,7 @@
 
 import SwiftUI
 import ConcentricOnboarding
-import SwiftUICharts
+//import SwiftUICharts
 import ExytePopupView
 import BottomBar_SwiftUI
     
