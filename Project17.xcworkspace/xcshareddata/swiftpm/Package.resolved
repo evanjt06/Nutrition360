@@ -1,52 +1,32 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "BottomBar-SwiftUI",
-        "repositoryURL": "https://github.com/smartvipere75/bottombar-swiftui",
-        "state": {
-          "branch": "master",
-          "revision": "838ce6316f8282467ebd00cf4d9706dc58978633",
-          "version": null
-        }
-      },
-      {
-        "package": "swift-algorithms",
-        "repositoryURL": "https://github.com/apple/swift-algorithms",
-        "state": {
-          "branch": null,
-          "revision": "2327673b0e9c7e90e6b1826376526ec3627210e4",
-          "version": "0.2.1"
-        }
-      },
-      {
-        "package": "swift-numerics",
-        "repositoryURL": "https://github.com/apple/swift-numerics",
-        "state": {
-          "branch": null,
-          "revision": "6583ac70c326c3ee080c1d42d9ca3361dca816cd",
-          "version": "0.1.0"
-        }
-      },
-      {
-        "package": "SnapshotTesting",
-        "repositoryURL": "https://github.com/pointfreeco/swift-snapshot-testing",
-        "state": {
-          "branch": null,
-          "revision": "f8a9c997c3c1dab4e216a8ec9014e23144cbab37",
-          "version": "1.9.0"
-        }
-      },
-      {
-        "package": "SwiftSpeech",
-        "repositoryURL": "https://github.com/Cay-Zhang/SwiftSpeech",
-        "state": {
-          "branch": null,
-          "revision": "6e41f289f5ccc1751ef5674972d46b48b326c4c6",
-          "version": "0.9.3"
-        }
+  "pins" : [
+    {
+      "identity" : "bottombar-swiftui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/smartvipere75/bottombar-swiftui",
+      "state" : {
+        "branch" : "master",
+        "revision" : "838ce6316f8282467ebd00cf4d9706dc58978633"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "charts",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danielgindi/Charts",
+      "state" : {
+        "revision" : "66546404a6739173b8e436ab6bc1f2897cd08594",
+        "version" : "3.6.0"
+      }
+    },
+    {
+      "identity" : "swiftspeech",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Cay-Zhang/SwiftSpeech",
+      "state" : {
+        "revision" : "6e41f289f5ccc1751ef5674972d46b48b326c4c6",
+        "version" : "0.9.3"
+      }
+    }
+  ],
+  "version" : 2
 }
