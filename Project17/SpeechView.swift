@@ -42,8 +42,8 @@ struct SpeechView: View {
                 }.hidden()
                 Spacer()
                 
-              Text(choice ? "Tap button to speak" : "Tap button again to search")
-                  .font(.system(size: 18, weight: .bold, design: .rounded))
+              Text(choice ? "Tap button once to speak" : "Tap button again to search")
+                  .font(.system(size: 20, weight: .bold, design: .rounded))
                   .multilineTextAlignment(.center)
                 
                 Spacer()
@@ -59,7 +59,6 @@ struct SpeechView: View {
                 }
             }
             
-            Spacer()
             
             Text(text)
                 .font(.system(size: 25, weight: .bold, design: .rounded))

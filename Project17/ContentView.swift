@@ -11,6 +11,22 @@ import ConcentricOnboarding
 import ExytePopupView
 import BottomBar_SwiftUI
     
+
+extension Color {
+    init(hex: String) {
+        let scanner = Scanner(string: hex)
+        var rgbValue: UInt64 = 0
+        scanner.scanHexInt64(&rgbValue)
+
+        let r = (rgbValue & 0xff0000) >> 16
+        let g = (rgbValue & 0xff00) >> 8
+        let b = rgbValue & 0xff
+
+
+        self.init(red: Double(r) / 0xff, green: Double(g) / 0xff, blue: Double(b) / 0xff)
+    }
+}
+
 extension Date {
 
   static func today() -> Date {
@@ -206,19 +222,13 @@ struct ContentView: View {
         
         self.hasSceneOnboardingScreen = defaults.bool(forKey: "hasSeenOnboarding")
         self.showingIntroPopup = defaults.bool(forKey: "showingIntroPopUp")
-        self.name = defaults.string(forKey: "name") ?? ""
-        self.gender = defaults.string(forKey: "gender") ?? ""
-        
+
     }
     
     @State private var selectedIndex: Int = 0
     
     @State private var hasSceneOnboardingScreen: Bool
     @State private var showingIntroPopup: Bool
-    @State private var name: String
-    @State private var gender: String
-    
-    @State private var showAlert = false
     
     @State private var fakeAlertNeverToBeTouched = false
     
@@ -229,33 +239,22 @@ struct ContentView: View {
         if !hasSceneOnboardingScreen {
            
             let pages = [
-                AnyView(Page1()),
-                AnyView(Page2(name: $name, gender: $gender)),
+                AnyView(Page1())
             ]
 
             var a = ConcentricOnboardingView(pages: pages, bgColors: [
                 "F38181",
-                "FCE38A",
-                ].map{ Color(hex: $0) })
+                "FCA903"
+            ].map{ Color(hex: $0) })
 
     //        a.didPressNextButton = {
     //            a.goToPreviousPage(animated: true)
     //        }
             a.insteadOfCyclingToFirstPage = {
                 
-                print("done!")
-                
-                if self.name == "" || self.gender == "" {
-                    showAlert = true
-                    return
-                }
-                
-                // assign to user defaults now
                 let defaults = UserDefaults.standard
-                defaults.set(self.name, forKey: "name")
-                defaults.set(self.gender, forKey: "gender")
                 defaults.set(true, forKey: "hasSeenOnboarding")
-                
+                                
                 showingIntroPopup = true
                 hasSceneOnboardingScreen = true
             }
@@ -266,9 +265,7 @@ struct ContentView: View {
             }
             return AnyView(
                 a
-            ).alert(isPresented: $showAlert) {
-                Alert(title: Text("Nutrition360 - Error"), message: Text("You must fill out your name and biological sex."), dismissButton: .default(Text("OK")))
-            }
+            )
             
         } else {
             return AnyView(
@@ -313,11 +310,11 @@ struct ContentView: View {
                 }
                 .popup(isPresented: $showingIntroPopup, type: .`default`, closeOnTap: false) {
                         VStack(spacing: 10) {
-                            Text("Hi \(self.name)!")
+                            Text("Welcome!")
                                         .foregroundColor(.white)
                                         .fontWeight(.bold)
 
-                                Text("This app allows you to add foods you have eaten in four sections: Breakfast, Lunch, Dinner, and Snacks. Your meals will be tracked everyday, and you may also choose and pick the day on the calendar. Additionally, you have the ability to take a picture of your food and the app will insert into the food log. You may also use the voice option to speak into the mic to insert your food. Nutritional details will be provided for each food you input. You can also look at your progress (progression in caloric intake) over a prolonged period of time. Happy tracking!")
+                                Text("Nutrition360 allows you to add foods you have eaten in four sections: Breakfast, Lunch, Dinner, and Snacks. Your meals will be tracked everyday, and you may also choose and pick the day on the calendar. Additionally, you have the ability to take a picture of your food and the app will insert into the food log. You may also use the voice option to speak into the mic to insert your food. Nutritional details will be provided for each food you input. You can also look at your progress (progression in caloric intake) over a prolonged period of time. Happy tracking!")
                                     .fixedSize(horizontal: false, vertical: true)
                                     .font(.system(size: 14))
                                     .foregroundColor(.white)
@@ -348,10 +345,10 @@ struct ContentView: View {
                     }
             
             
-            ).alert(isPresented: $fakeAlertNeverToBeTouched) {
-                Alert(title: Text(""), message: Text(""), dismissButton: .default(Text("OK")))
-            }}
-}
+            )
+
+        }
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
@@ -360,17 +357,3 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-extension Color {
-    init(hex: String) {
-        let scanner = Scanner(string: hex)
-        var rgbValue: UInt64 = 0
-        scanner.scanHexInt64(&rgbValue)
-
-        let r = (rgbValue & 0xff0000) >> 16
-        let g = (rgbValue & 0xff00) >> 8
-        let b = rgbValue & 0xff
-
-
-        self.init(red: Double(r) / 0xff, green: Double(g) / 0xff, blue: Double(b) / 0xff)
-    }
-}
