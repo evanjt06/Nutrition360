@@ -1,0 +1,32 @@
+{
+  "pins" : [
+    {
+      "identity" : "bottombar-swiftui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/smartvipere75/bottombar-swiftui",
+      "state" : {
+        "branch" : "master",
+        "revision" : "838ce6316f8282467ebd00cf4d9706dc58978633"
+      }
+    },
+    {
+      "identity" : "charts",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danielgindi/Charts",
+      "state" : {
+        "revision" : "66546404a6739173b8e436ab6bc1f2897cd08594",
+        "version" : "3.6.0"
+      }
+    },
+    {
+      "identity" : "swiftspeech",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Cay-Zhang/SwiftSpeech",
+      "state" : {
+        "revision" : "6e41f289f5ccc1751ef5674972d46b48b326c4c6",
+        "version" : "0.9.3"
+      }
+    }
+  ],
+  "version" : 2
+}

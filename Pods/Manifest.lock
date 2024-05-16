@@ -1,0 +1,20 @@
+PODS:
+  - ConcentricOnboarding (0.0.6)
+  - ExytePopupView (1.0.1)
+
+DEPENDENCIES:
+  - ConcentricOnboarding
+  - ExytePopupView
+
+SPEC REPOS:
+  trunk:
+    - ConcentricOnboarding
+    - ExytePopupView
+
+SPEC CHECKSUMS:
+  ConcentricOnboarding: 954a4c5486a96f446f38ebe96c4d5c7899315508
+  ExytePopupView: a3592b0bb5eee1e784eb857f89b3e82395912abd
+
+PODFILE CHECKSUM: 95dfa9390d7eb1c4a96b8ad76a11f3ba1f2c77ab
+
+COCOAPODS: 1.10.1
